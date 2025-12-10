@@ -7,4 +7,8 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    port: 3000, // Change this to your desired port number
+    strictPort: true, // Optional: Exit if port 3000 is in use, instead of trying the next available port
+  },
 })

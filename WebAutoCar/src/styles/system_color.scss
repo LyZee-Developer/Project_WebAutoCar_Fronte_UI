@@ -4,6 +4,7 @@
     --color-2:rgb(0, 0, 0, 0.50);
     --color-3:rgb(0, 0, 0, 0.70);
     --color-4:rgb(0, 0, 0);
+    --bg-card:#6363630c;
 }
 .dark{
     --bg:rgb(0, 0, 0);
@@ -11,6 +12,7 @@
     --color-2:rgb(255, 255, 255, 0.50);
     --color-3:rgb(255, 255, 255, 0.70);
     --color-4:rgb(255, 255, 255);
+    --bg-card:#121212;
 }
 body{
     background-color: var(--bg) !important;
@@ -26,4 +28,7 @@ body{
 }
 .color-4{
     color: var(--color-4) !important;
+}
+.bg-card{
+    background: var(--bg-card) !important;
 }

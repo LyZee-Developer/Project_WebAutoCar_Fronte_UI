@@ -19,10 +19,10 @@ const HeaderSectionComponent=()=> {
                 <img src={logor} className='w-full h-full ' alt="" />
             </div>
             <div className='flex items-center gap-x-6 text-white'>
-                <div className={style}>Home</div>
-                <div className={style}>Our Service</div>
-                <div className={style}>Our Work</div>
-                <div className={style}>About Us</div>
+                <div className={`${style} max-[590px]:hidden`}>Home</div>
+                <div className={`${style} max-[590px]:hidden`}>Our Service</div>
+                <div className={`${style} max-[590px]:hidden`}>Our Work</div>
+                <div className={`${style} max-[590px]:hidden`}>About Us</div>
                 <div className={`${style} border border-white rounded-[7px] px-3 py-1 `}>Contact Us</div>
                 <div className='w-[30px] cursor-pointer h-[30px]  text-white flex justify-center items-center' onClick={()=>onClickChangeThem()}>
                       {
