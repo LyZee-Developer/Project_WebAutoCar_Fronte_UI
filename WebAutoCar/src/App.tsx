@@ -12,6 +12,8 @@ import { useEffect } from 'react';
 import HeroSectionComponent from './components/HeroSectionComponent';
 import TextMidLineComponent from './components/TextMidLineComponent';
 import ServiceComponent from './components/ServiceComponent';
+import AboutUSComponent from './components/AboutUSComponent';
+import SlideMenuComponent from './components/SlideMenuComponent';
 function App() {
   const per :Person = {
     age:20,
@@ -19,7 +21,7 @@ function App() {
     name:"Lyleangseng",
     phone:"015844172"
   }
-  const isDark = useSelector((state:RootState)=>state.theme.isDark);
+  const isDark = useSelector((state:RootState)=>state.system.isDark);
   useEffect(()=>{
     if(isDark) document.body.classList.add(`dark`);
     else document.body.classList.remove(`dark`);
@@ -27,9 +29,11 @@ function App() {
   return (
     <>
       <div >
+        <SlideMenuComponent/>
         <HeaderSectionComponent/>
         <HeroSectionComponent/>
         <ServiceComponent/>
+        <AboutUSComponent/>
       </div>
     </>
   )

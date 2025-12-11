@@ -4,6 +4,10 @@
     --color-2:rgb(0, 0, 0, 0.50);
     --color-3:rgb(0, 0, 0, 0.70);
     --color-4:rgb(0, 0, 0);
+    --color-cnstra-1:rgba(255, 255, 255, 0.30);
+    --color-cnstra-2:rgb(255, 255, 255, 0.50);
+    --color-cnstra-3:rgb(255, 255, 255, 0.70);
+    --color-cnstra-4:rgb(255, 255, 255);
     --bg-card:#6363630c;
 }
 .dark{
@@ -12,6 +16,10 @@
     --color-2:rgb(255, 255, 255, 0.50);
     --color-3:rgb(255, 255, 255, 0.70);
     --color-4:rgb(255, 255, 255);
+    --color-cnstra-1:rgba(0, 0, 0, 0.30);
+    --color-cnstra-2:rgb(0, 0, 0, 0.50);
+    --color-cnstra-3:rgb(0, 0, 0, 0.70);
+    --color-cnstra-4:rgb(0, 0, 0);
     --bg-card:#121212;
 }
 body{
@@ -31,4 +39,18 @@ body{
 }
 .bg-card{
     background: var(--bg-card) !important;
+}
+.constrast {
+    .color-1{
+        color: var(--color-cnstra-1) !important;
+    }
+    .color-2{
+        color: var(--color-cnstra-2) !important;
+    }
+    .color-3{
+        color: var(--color-cnstra-3) !important;
+    }
+    .color-4{
+        color: var(--color-cnstra-4) !important;
+    }
 }

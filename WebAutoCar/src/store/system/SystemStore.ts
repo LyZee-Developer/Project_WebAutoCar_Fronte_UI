@@ -3,14 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 const ThemeStore = createSlice({
     name:"theme",
     initialState:{
-        isDark : false
+        isDark : false,
+        isShowNavLeftMenu:false,
     },
     reducers:{
         changeTheme :(state,actions)=>{
-            console.log(actions)
             state.isDark=actions.payload;
+        },
+        setIsShowNavLeftMenu :(state,actions)=>{
+            state.isShowNavLeftMenu=actions.payload;
         }
     }
 })
-export const {changeTheme} = ThemeStore.actions
+export const {changeTheme,setIsShowNavLeftMenu} = ThemeStore.actions
 export default ThemeStore.reducer;

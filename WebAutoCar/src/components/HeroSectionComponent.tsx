@@ -1,23 +1,28 @@
-import background from '../assets/image/background.jpg'
+import backgroundWhite from '../assets/image/cosySec.png'
+import background from '../assets/image/black.png'
 import bwm from '../assets/image/BMW.svg.png'
 import rr from '../assets/image/Rolls-Royce-Logo.jpg'
 import lam from '../assets/image/lamb.png'
 import fer from '../assets/image/ferrari-logo-png_seeklogo-512505.png'
 import mas from '../assets/image/mazda-logo-png_seeklogo-89733.png'
 import { Button } from "@heroui/react";
+import { useSelector } from 'react-redux'
+import type { RootState } from '../store/store'
+import {ui} from '../utils/GlobalHelper'
 const HeroSectionComponent=()=> {
-    var shape_style = "w-[100px] h-[100px] bg-[#ffffff1c] rounded-xl flex justify-center items-center";
+    var isDark = useSelector((state:RootState)=>state.system.isDark);
+    var shape_style = "w-[100px] h-[100px] bg-card rounded-xl flex justify-center items-center";
     var transition = "transition-all duration-100 ease-in"
   return (
-    <div className="w-full h-[500px]  bg-black hero relative">
-        <img src={background} alt="" className='w-full object-contain  h-full'/>
+    <div className={`w-full h-[500px]  ${isDark?"bg-black":"bg-white"} hero relative`}>
+        <img src={`${isDark?background:backgroundWhite}`} alt="" className={`w-full object-contain  h-full ${ui.tr100}`}/>
         <div className={`absolute max-[960px]:left-[40px] max-[960px]:top-[10%] top-[20%] left-[80px] ${transition} gap-y-4 flex  flex-col`}> 
             <div className='max-w-[500px] flex flex-col gap-y-5 '>
-                <div className='text-[#ffffff96]'>ផ្តល់ជូននូវ​ គុណភាព នឹងទុកចិត្តទ្វេដង</div>
-                <div className='text-5xl font-medium text-white max-[590px]:text-[25px]'>Heng Auto Machine</div>
-                <div className='leading-[25px] text-[#ffffff96]'>New products and model lines were introduced to the brand's portfolio and brought to the market and saw an increased productivity for the brand. In the late 2000s, during the Great Recession, Lamborghini's sales dropped nearly 50%.</div>
+                <div className='text-[#ffffff96] max-[590px]:color-4! color-3'>ផ្តល់ជូននូវ​ គុណភាព នឹងទុកចិត្តទ្វេដង</div>
+                <div className='text-5xl font-medium text-white    max-[590px]:text-[25px] color-4'>Heng Auto Machine</div>
+                <div className='leading-[25px] max-[590px]:color-4! color-2'>New products and model lines were introduced to the brand's portfolio and brought to the market and saw an increased productivity for the brand. In the late 2000s, during the Great Recession, Lamborghini's sales dropped nearly 50%.</div>
             </div>
-            <div className='flex gap-x-3'>  
+            <div className='flex gap-x-3 max-[420px]:pt-5'>  
                 <Button size="lg" className={"rounded-lg  bg-white text-black"}>
                     Contact Now
                 </Button>
