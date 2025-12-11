@@ -1,2 +1,55 @@
 @import url("../styles/font.css");
 @import url("../styles/system_color.scss");
+
+.typing-animation {
+  /* Required for the typing effect */
+  overflow: hidden; /* Hides text outside the width */
+  white-space: nowrap; /* Prevents text from wrapping */
+  width: 0; /* Starts with zero width */
+  
+  /* Styling (optional) */
+  border-right: .15em solid rgb(0, 140, 255); /* Blinking cursor effect */
+  font-family: monospace;
+  font-size: 3em;
+  margin: 1em 0 0 1em;
+
+  /* Animation properties */
+  /* 4s duration, steps() timing for character by character reveal, forwards fill-mode */
+  animation: type 4s steps(40, end) infinite; 
+}
+
+/* Keyframes define the animation sequence */
+@keyframes type {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+
+.carousel {
+  width: 600px;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  animation: scroll 22s linear infinite;
+}
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+/* Infinite Scroll Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

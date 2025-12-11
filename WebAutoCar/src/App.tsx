@@ -14,6 +14,7 @@ import TextMidLineComponent from './components/TextMidLineComponent';
 import ServiceComponent from './components/ServiceComponent';
 import AboutUSComponent from './components/AboutUSComponent';
 import SlideMenuComponent from './components/SlideMenuComponent';
+import WhyChooseUsPage from './pages/WhyChooseUsPage';
 function App() {
   const per :Person = {
     age:20,
@@ -28,12 +29,13 @@ function App() {
   },[isDark])
   return (
     <>
-      <div >
+      <div className='mb-20' >
         <SlideMenuComponent/>
         <HeaderSectionComponent/>
         <HeroSectionComponent/>
         <ServiceComponent/>
         <AboutUSComponent/>
+        <WhyChooseUsPage/>
       </div>
     </>
   )

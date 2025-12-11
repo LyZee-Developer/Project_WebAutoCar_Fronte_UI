@@ -14,12 +14,12 @@ const HeroSectionComponent=()=> {
     var shape_style = "w-[100px] h-[100px] bg-card rounded-xl flex justify-center items-center";
     var transition = "transition-all duration-100 ease-in"
   return (
-    <div className={`w-full h-[500px]  ${isDark?"bg-black":"bg-white"} hero relative`}>
+    <div className={`w-full h-[500px] mt-10 ${isDark?"bg-black":"bg-white"} hero relative`}>
         <img src={`${isDark?background:backgroundWhite}`} alt="" className={`w-full object-contain  h-full ${ui.tr100}`}/>
         <div className={`absolute max-[960px]:left-[40px] max-[960px]:top-[10%] top-[20%] left-[80px] ${transition} gap-y-4 flex  flex-col`}> 
             <div className='max-w-[500px] flex flex-col gap-y-5 '>
                 <div className='text-[#ffffff96] max-[590px]:color-4! color-3'>ផ្តល់ជូននូវ​ គុណភាព នឹងទុកចិត្តទ្វេដង</div>
-                <div className='text-5xl font-medium text-white    max-[590px]:text-[25px] color-4'>Heng Auto Machine</div>
+                <div className='text-5xl font-medium text-white    max-[590px]:text-[25px] color-4 typing-animation'>Heng Auto Machine</div>
                 <div className='leading-[25px] max-[590px]:color-4! color-2'>New products and model lines were introduced to the brand's portfolio and brought to the market and saw an increased productivity for the brand. In the late 2000s, during the Great Recession, Lamborghini's sales dropped nearly 50%.</div>
             </div>
             <div className='flex gap-x-3 max-[420px]:pt-5'>  
@@ -31,14 +31,31 @@ const HeroSectionComponent=()=> {
             </div>
         </div>
         <div className='absolute bottom-10 max-[390px]:right-[65px] max-[325px]:right-[35px] overflow-hidden right-10 flex gap-x-4'>
-            {
-                [lam,rr,bwm,fer,mas].map((val,index)=>(
-                <>
-                    <div className={`${shape_style} ${transition} max-[650px]:w-[70px]  max-[650px]:h-[70px] ${index==0?` max-[490px]:hidden `:``} ${index==1?` max-[390px]:hidden `:``}`}>
-                        <img src={`${val}`} className='max-[650px]:w-[40px] max-[650px]:h-[40px] object-contain cursor-pointer w-[60px] hover:rotate-360 transition-all max-[650px]:duration-200 duration-700 ease-in h-[60px]' alt="" />
-                    </div>
-                </>))
-            }
+            <div className="carousel max-[500px]:w-[400px]! max-[600px]:w-[500px]!">
+                <div className="carousel-track">
+                    {
+                        [lam,rr,bwm,fer,mas,lam,rr,bwm,fer,mas].map((val,index)=>(
+                        <>
+                             <div
+                                key={index}
+                                className={`${shape_style} ${transition} 
+                                max-[740px]:w-[70px] min-w-[70px] min-h-[70px] 
+                                max-[740px]:h-[70px]`}
+                            >
+                                <img
+                                src={val}
+                                alt=""
+                                className="object-contain cursor-pointer 
+                                w-[60px] h-[60px] 
+                                max-[740px]:w-[40px] max-[650px]:h-[40px]
+                                transition-all duration-700 ease-in 
+                                max-[650px]:duration-200 hover:rotate-360"
+                                />
+                            </div>
+                        </>))
+                    }
+                </div>
+            </div>  
         </div>
     </div>
   )

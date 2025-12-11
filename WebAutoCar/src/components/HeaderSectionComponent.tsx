@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
 import { changeTheme, setIsShowNavLeftMenu } from '../store/system/SystemStore'
 import '../styles/component/HeroSection.scss'
+import { useEffect, useState } from 'react'
 const HeaderSectionComponent=()=> {
   const isDark = useSelector((state:RootState)=>state.system.isDark);
+  const [isFixHeader,setIsFixHeader] = useState<boolean>(true);
   const isShowNavLeftMenu = useSelector((state:RootState)=>state.system.isShowNavLeftMenu);
   const dispatch = useDispatch();
   const onClickChangeThem=()=>{
@@ -15,10 +17,23 @@ const HeaderSectionComponent=()=> {
   const onClickNavLeftMenu=()=>{
     dispatch(setIsShowNavLeftMenu(!isShowNavLeftMenu))
   }
+  const handleScroll=(e:any)=>{
+    console.log("check",e)
+    console.log("window.scrollY",window.scrollY)
+  }
+  useEffect(() => {
+    // Add the event listener to the window
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener on component unmount to prevent memory leaks
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   var style="cursor-pointer text-[13px] opacity-70 hover:opacity-100 transition-all ease-in-out";
   return (
     <>
-        <div className="flex bg-black justify-between items-center px-2"> 
+        <div className={`flex bg-black justify-between items-center px-2 ${isFixHeader?"fixed z-2 w-full left-0 top-0":""}`}> 
             <div className='w-[130px]'>
                 <img src={logor} className='w-full h-full ' alt="" />
             </div>
