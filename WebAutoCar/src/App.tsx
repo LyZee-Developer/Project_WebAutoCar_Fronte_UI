@@ -15,6 +15,7 @@ import ServiceComponent from './components/ServiceComponent';
 import AboutUSComponent from './components/AboutUSComponent';
 import SlideMenuComponent from './components/SlideMenuComponent';
 import WhyChooseUsPage from './pages/WhyChooseUsPage';
+import FooterPage from './pages/FooterPage';
 function App() {
   const per :Person = {
     age:20,
@@ -29,13 +30,14 @@ function App() {
   },[isDark])
   return (
     <>
-      <div className='mb-20' >
+      <div >
         <SlideMenuComponent/>
         <HeaderSectionComponent/>
         <HeroSectionComponent/>
         <ServiceComponent/>
         <AboutUSComponent/>
         <WhyChooseUsPage/>
+        <FooterPage/>
       </div>
     </>
   )

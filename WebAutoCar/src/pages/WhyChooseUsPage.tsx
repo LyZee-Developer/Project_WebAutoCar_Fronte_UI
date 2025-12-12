@@ -3,7 +3,7 @@ import WhyChooseUsComponent from "../components/why_choose_us/WhyChooseUsCompone
 
 const WhyChooseUsPage = () => {
   return (
-    <div className="grid grid-cols-[1fr_1fr] max-[900px]:flex flex-col w-full  h-[500px] gap-x-3 mt-10 max-w-[1500px] mx-auto">
+    <div className="grid grid-cols-[1fr_1fr] max-[900px]:flex flex-col w-full py-10  gap-x-3 mt-10 max-w-[1500px] mx-auto">
         <BookAppointmentComponent/>
         <WhyChooseUsComponent/>
     </div>
