@@ -33,7 +33,7 @@ const HeaderSectionComponent=()=> {
   var style="cursor-pointer text-[13px] opacity-70 hover:opacity-100 transition-all ease-in-out";
   return (
     <>
-        <div className={`flex bg-black justify-between items-center px-2 ${isFixHeader?"fixed z-2 w-full left-0 top-0":""}`}> 
+        <div className={`flex bg-black justify-between items-center px-2 ${isFixHeader?"fixed z-200 w-full left-0 top-0":""}`}> 
             <div className='w-[130px]'>
                 <img src={logor} className='w-full h-full ' alt="" />
             </div>
