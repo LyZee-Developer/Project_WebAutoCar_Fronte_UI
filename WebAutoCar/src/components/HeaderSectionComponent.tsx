@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
 import { changeTheme, SelectHeaderAction, setIsShowNavLeftMenu } from '../store/system/SystemStore'
 import '../styles/component/HeroSection.scss'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { data_header } from '../utils/system_data'
 const HeaderSectionComponent=()=> {
   const isDark = useSelector((state:RootState)=>state.system.isDark);
   const [isFixHeader,setIsFixHeader] = useState<boolean>(true);
-      const [headerClick,SetHeaderClick] = useState<string>("");
+  setIsFixHeader(true);
+  const [headerClick,SetHeaderClick] = useState<string>("");
   const isShowNavLeftMenu = useSelector((state:RootState)=>state.system.isShowNavLeftMenu);
   const dispatch = useDispatch();
   const onClickChangeThem=()=>{

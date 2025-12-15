@@ -7,15 +7,13 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import type { RootState } from './store/store';
-import { useEffect, useRef, type RefObject } from 'react';
+import { useEffect, useRef } from 'react';
 import HeroSectionComponent from './components/HeroSectionComponent';
 import ServiceComponent from './components/ServiceComponent';
 import AboutUSComponent from './components/AboutUSComponent';
 import SlideMenuComponent from './components/SlideMenuComponent';
 import WhyChooseUsPage from './pages/WhyChooseUsPage';
 import FooterPage from './pages/FooterPage';
-import ScrollDemo from './components/ScrollToTestComponent';
-import { data_header } from './utils/system_data';
 function App() {
   const isDark = useSelector((state:RootState)=>state.system.isDark);
   const headerType = useSelector((state:RootState)=>state.system.headerType);
@@ -28,7 +26,6 @@ function App() {
     if(isDark) document.body.classList.add(`dark`);
     else document.body.classList.remove(`dark`);
   },[isDark])
-  const headerCode:string[] = data_header.map(val=>val.code);
   useEffect(()=>{
    if(headerType=="home"){
     refheader?.current?.scrollIntoView({ 

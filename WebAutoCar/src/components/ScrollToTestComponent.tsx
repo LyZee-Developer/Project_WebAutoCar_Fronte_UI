@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 const ScrollDemo = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
