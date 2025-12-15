@@ -5,12 +5,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
 import { changeTheme, SelectHeaderAction, setIsShowNavLeftMenu } from '../store/system/SystemStore'
 import '../styles/component/HeroSection.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { data_header } from '../utils/system_data'
 const HeaderSectionComponent=()=> {
   const isDark = useSelector((state:RootState)=>state.system.isDark);
   const [isFixHeader,setIsFixHeader] = useState<boolean>(true);
-  setIsFixHeader(true);
   const [headerClick,SetHeaderClick] = useState<string>("");
   const isShowNavLeftMenu = useSelector((state:RootState)=>state.system.isShowNavLeftMenu);
   const dispatch = useDispatch();
@@ -20,19 +19,19 @@ const HeaderSectionComponent=()=> {
   const onClickNavLeftMenu=()=>{
     dispatch(setIsShowNavLeftMenu(!isShowNavLeftMenu))
   }
-  // const handleScroll=(e:any)=>{
-  //   console.log("check",e)
-  //   console.log("window.scrollY",window.scrollY)
-  // }
-  // useEffect(() => {
-  //   // Add the event listener to the window
-  //   window.addEventListener('scroll', handleScroll);
-  //   setIsFixHeader(false);
-  //   // Clean up the event listener on component unmount to prevent memory leaks
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
+  const handleScroll=(e:any)=>{
+    console.log("check",e)
+    console.log("window.scrollY",window.scrollY)
+  }
+  useEffect(() => {
+    // Add the event listener to the window
+    window.addEventListener('scroll', handleScroll);
+    setIsFixHeader(false);
+    // Clean up the event listener on component unmount to prevent memory leaks
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   const onSelectHeader=(select:string)=>{
     SetHeaderClick(select);
     dispatch(SelectHeaderAction(select))

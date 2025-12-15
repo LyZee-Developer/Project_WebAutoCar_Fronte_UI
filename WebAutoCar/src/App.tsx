@@ -26,7 +26,9 @@ function App() {
     if(isDark) document.body.classList.add(`dark`);
     else document.body.classList.remove(`dark`);
   },[isDark])
+
   useEffect(()=>{
+    console.log("yes")
    if(headerType=="home"){
     refheader?.current?.scrollIntoView({ 
       behavior: 'smooth', // Optional: smooth animation
@@ -55,14 +57,14 @@ function App() {
 
   return (
     <>
-      <div >
+      <div>
         <div><SlideMenuComponent /></div>
-        <div><HeaderSectionComponent/></div>
-        <div ref={refheader}><HeroSectionComponent/></div>
-        <div ref={refservice}><ServiceComponent/></div>
-        <div ref={refaboutus}><AboutUSComponent/></div>
-        <div ref={refwhychoose}><WhyChooseUsPage/></div>
-        <div ref={reffooter}><FooterPage/></div>
+        <div><HeaderSectionComponent /></div>
+        <div ref={refheader}><HeroSectionComponent /></div>
+        <div ref={refservice}><ServiceComponent /></div>
+        <div ref={refaboutus}><AboutUSComponent /></div>
+        <div ref={refwhychoose}><WhyChooseUsPage /></div>
+        <div ref={reffooter}><FooterPage /></div>
       </div>
     </>
   )

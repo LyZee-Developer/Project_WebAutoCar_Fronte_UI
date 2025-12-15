@@ -34,7 +34,7 @@ const SlideMenuComponent = () => {
             <div className="text-white flex flex-col  pt-3 px-4">
                 {
                     data_header.map(val=>
-                        <div className={`w-full cursor-pointer rounded-md pl-5 py-3 hover:bg-[#cacaca27] ${ui.tr200}`} onClick={()=>OnSelectNavLeft(val.code)}>
+                        <div key={val.code} className={`w-full cursor-pointer rounded-md pl-5 py-3 hover:bg-[#cacaca27] ${ui.tr200}`} onClick={()=>OnSelectNavLeft(val.code)}>
                             {val.title}
                         </div>
                     )
