@@ -11,7 +11,7 @@ const ServiceComponent = () => {
             <div className="max-w-[800px] text-center color-2"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum in dignissimos veritatis? Ipsum suscipit dicta esse iure, laborum maxime. Suscipit ad pariatur facilis aspernatur ea harum voluptatum, quos sunt aliquid.</p></div>
         </div>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(330px,1fr))] gap-7 max-w-[1000px] mx-auto px-[20px]">
-            {[1,2,3,4,5,5].map(val=>(<div className=" bg-card  flex flex-col gap-y-4 w-full p-5 rounded-2xl">
+            {[1,2,3,4,5,5].map(val=>(<div className={`bg-card  flex flex-col gap-y-4 w-full p-5 rounded-2xl ${val}`}>
                 <div className='w-[45px] h-[45px]'> <img className='w-full h-full' src={service} alt="" /></div>
                 <div>
                     <div className='font-bold text-[20px] color-4'>Service</div>

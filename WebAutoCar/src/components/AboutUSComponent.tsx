@@ -17,7 +17,7 @@ const AboutUSComponent = () => {
                     <div className='color-2'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ea excepturi nisi repellat inventore magnam odit tempora! Molestiae maxime dolor recusandae eum, sunt voluptas odit vel aspernatur, quis similique nemo!</div>
                 </div>
                 <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3'>
-                    {[1,2,3,4].map(val=>(<div className=" flex flex-col gap-y-4 w-full pt-5 rounded-2xl">
+                    {[1,2,3,4].map(val=>(<div className={`flex flex-col gap-y-4 w-full pt-5 rounded-2xl  ${val}`}>
                         <div className='font-bold text-[20px] color-4'>Service</div>
                         <div className='color-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum vero recusandae doloremque eveniet natus, ipsam adipisci in est id illum illo laudantium aut nulla, reprehenderit possimus aperiam nam voluptatem dicta?</div>
                     </div>))}
@@ -33,7 +33,7 @@ const AboutUSComponent = () => {
                 <div className="carousel w-full!">
                     <div className="carousel-track">
                         {
-                            [1,2,3,4,5,6,4,5,6,7,7].map(val=>(<div className='flex items-center'>
+                            [1,2,3,4,5,6,4,5,6,7,7].map(val=>(<div className={`flex items-center ${val}`}>
                                 <div className='w-[80px]'>
                                     <img src={logor} className='w-full h-full object-contain' alt="" />
                                 </div>
