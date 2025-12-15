@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ui } from "../utils/GlobalHelper"
 import type { RootState } from "../store/store";
-import { useEffect } from "react";
 import logor from '../assets/logo/logor.png'
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

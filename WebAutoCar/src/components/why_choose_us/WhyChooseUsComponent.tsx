@@ -9,7 +9,7 @@ const WhyChooseUsComponent = () => {
             <div>Why Choose us</div>
             <div className='text-[26px] font-bold leading-[40px]'>Get your rise back on track with our expert Car Repair Service</div>
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4'>
-                    {[1,2,3,4].map(val=>(<div className=" flex flex-col gap-y-1 w-full pt-5 rounded-2xl text-white">
+                    {[1,2,3,4].map(val=>(<div className={`flex flex-col gap-y-1 w-full pt-5 rounded-2xl text-white ${val}`}>
                         <div className='font-bold text-[20px] '>Service</div>
                         <div className=''>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum vero recusandae doloremque eveniet natus,</div>
                     </div>))}

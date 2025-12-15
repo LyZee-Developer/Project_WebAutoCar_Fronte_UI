@@ -24,7 +24,7 @@ const HeaderSectionComponent=()=> {
   useEffect(() => {
     // Add the event listener to the window
     window.addEventListener('scroll', handleScroll);
-
+    setIsFixHeader(false);
     // Clean up the event listener on component unmount to prevent memory leaks
     return () => {
       window.removeEventListener('scroll', handleScroll);
