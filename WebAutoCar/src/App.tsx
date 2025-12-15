@@ -7,29 +7,65 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import type { RootState } from './store/store';
-import { useEffect } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 import HeroSectionComponent from './components/HeroSectionComponent';
 import ServiceComponent from './components/ServiceComponent';
 import AboutUSComponent from './components/AboutUSComponent';
 import SlideMenuComponent from './components/SlideMenuComponent';
 import WhyChooseUsPage from './pages/WhyChooseUsPage';
 import FooterPage from './pages/FooterPage';
+import ScrollDemo from './components/ScrollToTestComponent';
+import { data_header } from './utils/system_data';
 function App() {
   const isDark = useSelector((state:RootState)=>state.system.isDark);
+  const headerType = useSelector((state:RootState)=>state.system.headerType);
+  const refservice = useRef<HTMLDivElement | null>(null);
+  const reffooter = useRef<HTMLDivElement | null>(null);
+  const refheader = useRef<HTMLDivElement | null>(null);
+  const refwhychoose = useRef<HTMLDivElement | null>(null);
+  const refaboutus = useRef<HTMLDivElement | null>(null);
   useEffect(()=>{
     if(isDark) document.body.classList.add(`dark`);
     else document.body.classList.remove(`dark`);
   },[isDark])
+  const headerCode:string[] = data_header.map(val=>val.code);
+  useEffect(()=>{
+   if(headerType=="home"){
+    refheader?.current?.scrollIntoView({ 
+      behavior: 'smooth', // Optional: smooth animation
+      block: 'start'      // Optional: align the top of the element to the top of the viewport
+    });
+   }
+   else if(headerType=="our_service"){
+     refservice?.current?.scrollIntoView({ 
+      behavior: 'smooth', // Optional: smooth animation
+      block: 'start'      // Optional: align the top of the element to the top of the viewport
+    });
+   }
+   else if(headerType=="about_us"){
+     refaboutus?.current?.scrollIntoView({ 
+      behavior: 'smooth', // Optional: smooth animation
+      block: 'start'      // Optional: align the top of the element to the top of the viewport
+    });
+   }
+   else if(headerType=="our_work" || headerType=="contact_us"){
+     refwhychoose?.current?.scrollIntoView({ 
+      behavior: 'smooth', // Optional: smooth animation
+      block: 'start'      // Optional: align the top of the element to the top of the viewport
+    });
+   }
+  },[headerType])
+
   return (
     <>
       <div >
-        <SlideMenuComponent/>
-        <HeaderSectionComponent/>
-        <HeroSectionComponent/>
-        <ServiceComponent/>
-        <AboutUSComponent/>
-        <WhyChooseUsPage/>
-        <FooterPage/>
+        <div><SlideMenuComponent /></div>
+        <div><HeaderSectionComponent/></div>
+        <div ref={refheader}><HeroSectionComponent/></div>
+        <div ref={refservice}><ServiceComponent/></div>
+        <div ref={refaboutus}><AboutUSComponent/></div>
+        <div ref={refwhychoose}><WhyChooseUsPage/></div>
+        <div ref={reffooter}><FooterPage/></div>
       </div>
     </>
   )

@@ -19,10 +19,10 @@ const HeroSectionComponent=()=> {
         <div className={`absolute max-[960px]:left-[40px] max-[960px]:top-[10%] top-[20%] left-[80px] ${transition} gap-y-4 flex  flex-col`}> 
             <div className='max-w-[500px] flex flex-col gap-y-5 '>
                 <div className='text-[#ffffff96] max-[590px]:color-4! color-3'>ផ្តល់ជូននូវ​ គុណភាព នឹងទុកចិត្តទ្វេដង</div>
-                <div className='text-5xl font-medium text-white    max-[590px]:text-[25px] color-4 typing-animation'>Heng Auto Machine</div>
-                <div className='leading-[25px] max-[590px]:color-4! color-2'>New products and model lines were introduced to the brand's portfolio and brought to the market and saw an increased productivity for the brand. In the late 2000s, during the Great Recession, Lamborghini's sales dropped nearly 50%.</div>
+                <div className='text-5xl font-medium text-white  max-[590px]:text-[25px] color-4 typing-animation'>Heng Auto Service</div>
+                <div className='leading-[25px] max-[590px]:color-4! color-2 max-[510px]:hidden'>New products and model lines were introduced to the brand's portfolio and brought to the market and saw an increased productivity for the brand. In the late 2000s, during the Great Recession, Lamborghini's sales dropped nearly 50%.</div>
             </div>
-            <div className='flex gap-x-3 max-[420px]:pt-5'>  
+            <div className='flex gap-x-3 max-[420px]:pt-5 max-[510px]:hidden'>  
                 <Button size="lg" className={"rounded-lg  bg-white text-black"}>
                     Contact Now
                 </Button>

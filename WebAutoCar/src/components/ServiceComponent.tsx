@@ -5,7 +5,7 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 const ServiceComponent = () => {
   return (
     <div>
-        <div className="w-full flex justify-center flex-col items-center my-[50px]  px-[20px]">
+        <div className="w-full flex justify-center flex-col items-center   px-[20px] pt-20">
             <h3 className="font-medium color-3">Our Service</h3>
             <h1 className="text-[34px] font-bold color-4">What service we're offering</h1>
             <div className="max-w-[800px] text-center color-2"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum in dignissimos veritatis? Ipsum suscipit dicta esse iure, laborum maxime. Suscipit ad pariatur facilis aspernatur ea harum voluptatum, quos sunt aliquid.</p></div>

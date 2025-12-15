@@ -5,7 +5,7 @@ import logor from '../assets/logo/logor.png'
 const AboutUSComponent = () => {
     var isDark = useSelector((state:RootState)=>state.system.isDark);
   return (
-    <div className={`mt-5 w-full  ${!isDark?"bg-black constrast":""}   rounded-3xl  p-10   max-w-[1500px] mx-auto `}>
+    <div className={`mt-5 pt-20 w-full  ${!isDark?"bg-black constrast":""}   rounded-3xl  p-10   max-w-[1500px] mx-auto `}>
         <div className="max-[900px]:flex flex-col max-[600px]:p-0 p-10 grid flex-wrap items-start grid-cols-[1fr_1fr]">
             <div className='w-full h-full'>
                 <img className='w-full h-full object-cover rounded-2xl' src={imgfix} alt="" />
