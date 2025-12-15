@@ -5,7 +5,7 @@ import rr from '../assets/image/Rolls-Royce-Logo.jpg'
 import lam from '../assets/image/lamb.png'
 import fer from '../assets/image/ferrari-logo-png_seeklogo-512505.png'
 import mas from '../assets/image/mazda-logo-png_seeklogo-89733.png'
-// import { Button } from "@heroui/react";
+import { Button } from '@heroui/react';
 import { useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
 import {ui} from '../utils/GlobalHelper'
@@ -23,11 +23,11 @@ const HeroSectionComponent=()=> {
                 <div className='leading-[25px] max-[590px]:color-4! color-2 max-[510px]:hidden'>New products and model lines were introduced to the brand's portfolio and brought to the market and saw an increased productivity for the brand. In the late 2000s, during the Great Recession, Lamborghini's sales dropped nearly 50%.</div>
             </div>
             <div className='flex gap-x-3 max-[420px]:pt-5 max-[510px]:hidden'>  
-                {/* <button size="lg" className={"rounded-lg  bg-white text-black"}>
+                 <Button size="lg" className={"rounded-lg  bg-white text-black"}>
                     Contact Now
-                </button>
+                </Button> 
 
-                <button size='lg' className={"rounded-lg border-white border-1! bg-[#000000]"}>Lean More</button> */}
+                <Button size='lg' className={"rounded-lg border-white border-1! bg-[#000000]"}>Lean More</Button>  
             </div>
         </div>
         <div className='absolute bottom-10 max-[390px]:right-[65px] max-[325px]:right-[35px] overflow-hidden right-10 flex gap-x-4'>

@@ -1,7 +1,7 @@
 import imgfix from '../../assets/image/fixcar.webp'
 const WhyChooseUsComponent = () => {
   return (
-    <div className='w-full bg-red-400 relative min-h-[600px] rounded-3xl overflow-hidden'>
+    <div className="w-full bg-red-400 relative h-auto  max-[900px]:h-[800px] rounded-3xl overflow-hidden ">
         <img src={imgfix} className='w-full absolute z-3 top-0 left-0 h-full object-cover' alt="" />
         <div className='absolute top-0 left-0 w-full h-full bg-[#0000009c] z-4'></div>
         <div className='absolute w-full top-1/2 left-1/2 z-8 -translate-y-1/2 -translate-x-1/2'>

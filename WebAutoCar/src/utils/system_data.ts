@@ -1,5 +1,13 @@
 import type { HeaderData } from "../interfaces/system";
-
+const currentYear: number = new Date().getFullYear();
+const getYearsToCurrent = ():number[]=>{
+    const years:number[] = [];
+    var start_year :number = 1990;
+    for(var year = start_year ; year <= currentYear; year++) {
+        if(!years.includes(year)) years.push(year);
+    }
+    return years;
+}
 const header:HeaderData[] = [
         {
             code:"home",
@@ -27,4 +35,4 @@ const header:HeaderData[] = [
             titleEnglish:"Contact Us"
         }
     ] 
-export {header as data_header};
+export {header as data_header,getYearsToCurrent};
