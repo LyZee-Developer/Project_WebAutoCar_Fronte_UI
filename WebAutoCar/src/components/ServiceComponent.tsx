@@ -1,4 +1,4 @@
-import { Button } from '@heroui/react'
+// import { Button } from '@heroui/react'
 import service from '../assets/image/maintenance.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
@@ -24,8 +24,8 @@ const ServiceComponent = () => {
                 <div className='text-[30px] font-bold color-4 px-10'><FontAwesomeIcon icon={faLocationDot} className='text-blue-400!' />Locateed in Cardiff, we are easily accessible to vehicle owners across the region</div>
                 <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam nobis voluptatem quod unde saepe magni fugiat?</div>
                 <div className='flex gap-x-3  mt-3'>
-                    <Button size='lg' className={"rounded-xl" } >Get free Quote today!</Button>
-                    <Button size='lg' className={"rounded-xl" }>Contact Us</Button>
+                    {/* <Button size='lg' className={"rounded-xl" } >Get free Quote today!</Button>
+                    <Button size='lg' className={"rounded-xl" }>Contact Us</Button> */}
                 </div>
 
         </div>
