@@ -6,27 +6,66 @@ import instagram from '../assets/social/instagram.svg'
 import telegram from '../assets/social/telegram.svg'
 import youtube from '../assets/social/youtube.svg'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
+import type { InfoOwner } from '../interfaces/system'
+import { setOwnInfo } from '../store/system/SystemStore'
+import { isEmptyData, socials } from '../utils/system_data'
+import { https } from '../utils/https'
 const FooterPage = () => {
     var isDark = useSelector((state:RootState)=>state.system.isDark);
+    const dispatch = useDispatch()
     const onClickOnMap=()=>{
         console.log("click")
         window.open("https://www.google.com/maps?ll=11.553453,104.821334&z=18&t=m&hl=en&gl=KH&mapclient=embed&cid=14629073525661475694")
     }
+    const [info,setInfo] = useState<InfoOwner>()
+    // Use an async function inside useEffect for async/await syntax
+    const fetchData = async () => {
+        const response = await https({url:"http://localhost:8989/api/owner_info/list",data:{Id:0,
+            Search:"",
+            OrderBy:"Id",
+            OrderDir:"desc",
+            IsComplete:false,
+            Page:1,
+            Record:10
+        },
+            method:"post"
+        });
+            console.log("->",response.data)
+        if(response.data.length > 0 ){
+            setInfo(response.data[0])
+            dispatch(setOwnInfo(response.data[0]))
+        }
+    };
+  useEffect(() => {
+    fetchData();
+  }, []); // Empty dependency array ensures it runs once on mount
+  const onClickSocial=(social:any)=>{
+    var link:string | undefined = "";
+    if(social.code=="facebook") link=info?.FaceboolURL;
+    else if(social.code=="instagram") link=info?.InstagramURL;
+    else if(social.code=="telegram") link=info?.TelegramURL;
+    else if(social.code=="youtube") link=info?.YoutubeURL;
+    if(link!="" && link!=undefined) window.open(link,"_blank")
+  }
   return (
     <div className={`w-full bg-black p-5 ${!isDark?"constrast":""}`}>
         <div className="grid w-full h-full max-[540px]:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] max-[1300px]:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-4">
             <div className={`w-full h-full flex flex-col gap-y-10   `}>
                 <div className='w-[160px]'><img src={imgfix} alt="" /></div>
                 <div className='color-3'>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro atque inventore amet totam dolore ipsam aliquam, dolorum ratione ipsa numquam architecto itaque voluptate, est facere deserunt repellat a voluptates. Temporibus.
+                    {info?.Description}
                 </div>
                 <div className='flex gap-x-4'>
                     {
-                        [facebook,instagram,telegram,youtube].map(val=><><div className='w-[40px] h-[40px] rounded-full'>
-                        <img src={val} alt="" className='w-full h-full object-contain' />
-                    </div></>)
+                        socials.map(val=><>
+                            <div className='w-[40px] h-[40px] rounded-full' onClick={()=>onClickSocial(val)}>
+                                <img src={val.img} alt=""  className='w-full h-full object-contain' />
+                            </div>
+                        </>)
                     }
                 </div>
             </div>
@@ -48,19 +87,23 @@ const FooterPage = () => {
                         <div>
                             <FontAwesomeIcon icon={faPhone} />
                         </div>
-                        <div>
+                        {
+                           info?.WorkingInfo!="" && info?.WorkingInfo!=null  ?<><div>
                             <div className='text-[13px] color-2'>Working hours:</div>
-                            <div className='text-[18px] color-4'>Mon - Fri (9:00AM-5:00PM)</div>
-                        </div>
+                            <div className='text-[18px] color-4'>{info?.WorkingInfo}</div>
+                        </div></>:""
+                        }
                     </div>
                     <div className='flex gap-x-3 color-3 '>
                         <div>
                             <FontAwesomeIcon icon={faPhone} />
                         </div>
-                        <div >
-                            <div className='text-[13px] color-2'>Phone:</div>
-                            <div className='text-[18px] color-4'>015 844 712 / 023 444 555</div>
-                        </div>
+                         {
+                           info?.Phone1!="" && info?.Phone1!=null  ?<><div>
+                             <div className='text-[13px] color-2'>Phone:</div>
+                            <div className='text-[18px] color-4'>{info?.Phone} / {info?.Phone1}</div>
+                        </div></>:""
+                        }
                     </div>
                     <div className='flex gap-x-3 color-3 '>
                         <div>
@@ -68,7 +111,7 @@ const FooterPage = () => {
                         </div>
                         <div >
                             <div className='text-[13px] color-2'>Email:</div>
-                            <div className='text-[18px] color-4'>lyleangheng@gmail.com</div>
+                            <div className='text-[18px] color-4'>{info?.Email}</div>
                         </div>
                     </div>
                 </div>

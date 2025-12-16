@@ -5,7 +5,8 @@ const ThemeStore = createSlice({
     initialState:{
         isDark : false,
         isShowNavLeftMenu:false,
-        headerType:""
+        headerType:"",
+        ownInfo:{}
     },
     reducers:{
         changeTheme :(state,actions)=>{
@@ -16,8 +17,11 @@ const ThemeStore = createSlice({
         },
         setIsShowNavLeftMenu :(state,actions)=>{
             state.isShowNavLeftMenu=actions.payload;
+        },
+        setOwnInfo :(state,actions)=>{
+            state.ownInfo=actions.payload;
         }
     }
 })
-export const {changeTheme,setIsShowNavLeftMenu,SelectHeaderAction} = ThemeStore.actions
+export const {changeTheme,setIsShowNavLeftMenu,SelectHeaderAction,setOwnInfo} = ThemeStore.actions
 export default ThemeStore.reducer;

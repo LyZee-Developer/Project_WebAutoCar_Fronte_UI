@@ -1,5 +1,9 @@
 import { enqueueSnackbar } from "notistack";
 import type { HeaderData } from "../interfaces/system";
+import facebook from '../assets/social/facebook.svg'
+import instagram from '../assets/social/instagram.svg'
+import telegram from '../assets/social/telegram.svg'
+import youtube from '../assets/social/youtube.svg'
 const currentYear: number = new Date().getFullYear();
 const getYearsToCurrent = ():number[]=>{
     const years:number[] = [];
@@ -9,6 +13,24 @@ const getYearsToCurrent = ():number[]=>{
     }
     return years;
 }
+const socials = [
+    {
+        code:"facebook",
+        img:facebook
+    },
+    {
+        code:"youtube",
+        img:youtube
+    },
+    {
+        code:"telegram",
+        img:telegram
+    },
+    {
+        code:"instagram",
+        img:instagram
+    },
+]
 const duration=[4000,3800,2400,1500,4500,6000,3500,8000]
 const header:HeaderData[] = [
         {
@@ -52,4 +74,7 @@ const ShowSnackBar=(message:string)=>{
     });
 
 }
-export {header as data_header,duration,getYearsToCurrent,ShowSnackBar};
+const isEmptyData=(data:any):any=>{
+    return data=="" || data==null || data==undefined || data?.length==0;
+}
+export {header as data_header,duration,socials,getYearsToCurrent,ShowSnackBar,isEmptyData};
