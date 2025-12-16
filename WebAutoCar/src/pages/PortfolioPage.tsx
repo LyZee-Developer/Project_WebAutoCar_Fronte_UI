@@ -1,7 +1,7 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import imagcar from '../assets/image/bmw-white.png'
 import facebook from '../assets/social/facebook.svg'
 import instagram from '../assets/social/instagram.svg'
@@ -15,8 +15,10 @@ import { useEffect, useRef, useState } from "react";
 // import 'swiper/bundle';
 // const swiper = useSwiper();
 import type { Swiper as SwiperType } from "swiper";
+import { duration } from "../utils/system_data";
 const PortfolioPage = () => {
     const swiperRef = useRef<SwiperType | null>(null);
+    var Duration=2000;
     const onClickBack=(behavior:string)=>{
         if(behavior=="front") swiperRef.current?.slideNext()
         else swiperRef.current?.slidePrev()
@@ -60,16 +62,22 @@ const PortfolioPage = () => {
             spaceBetween={30}
             className="h-[400px] "
             slidesPerView={rowSlide}
+            
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => swiperRef.current = swiper}
             >
                 {[2,3,4,5,6,3,4,5,6,7,2].map(val=>{
+                    Duration=duration[Math.floor(Math.random()*duration.length)];
                     return (
                         <>
                         <SwiperSlide key={val} className="h-full w-full bg-card">
                                 <Swiper
                                     className="h-full w-full"
-                                    modules={[Navigation, Pagination]}
+                                    modules={[Navigation,Autoplay, Pagination]}
+                                    autoplay={{
+                                        delay: Duration,
+                                        disableOnInteraction: false,
+                                    }}
                                     navigation
                                     pagination={{ clickable: true }}
                                 >

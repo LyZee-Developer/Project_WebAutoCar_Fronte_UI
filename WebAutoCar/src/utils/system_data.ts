@@ -9,6 +9,7 @@ const getYearsToCurrent = ():number[]=>{
     }
     return years;
 }
+const duration=[4000,3800,2400,1500,4500,6000,3500,8000]
 const header:HeaderData[] = [
         {
             code:"home",
@@ -51,4 +52,4 @@ const ShowSnackBar=(message:string)=>{
     });
 
 }
-export {header as data_header,getYearsToCurrent,ShowSnackBar};
+export {header as data_header,duration,getYearsToCurrent,ShowSnackBar};
