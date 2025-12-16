@@ -34,16 +34,21 @@ const PortfolioPage = () => {
                 height: window.innerHeight,
             });
     }
-    useEffect(() => {
-        window.addEventListener('resize', handleResize);
+    const checkSizeColumn=()=>{
         if(windowSize.width !=undefined){
             if(windowSize?.width > 1400) setRowSlide(6);
             if(windowSize?.width < 1400 && windowSize?.width>1000) setRowSlide(4);
             if(windowSize?.width < 1000 && windowSize?.width>800) setRowSlide(3);
             if(windowSize?.width < 800 && windowSize?.width>470) setRowSlide(2);
             if(windowSize?.width < 470 && windowSize?.width>100) setRowSlide(1);
-            
         }
+    }
+    useEffect(()=>{
+        handleResize();
+    },[])
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        if(windowSize.width !=undefined) checkSizeColumn()
     }, [windowSize.width]);
   return (
     <div className="w-full py-10">

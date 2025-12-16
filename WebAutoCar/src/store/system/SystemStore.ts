@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const ThemeStore = createSlice({
     name:"theme",
     initialState:{
-        isDark : false,
+        isDark : true,
         isShowNavLeftMenu:false,
         headerType:"",
         ownInfo:{}

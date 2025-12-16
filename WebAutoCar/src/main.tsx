@@ -11,7 +11,10 @@ import { store } from './store/store.ts'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <SnackbarProvider maxSnack={15}>
+      <SnackbarProvider maxSnack={15} anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'right',
+    }}>
         <App />
       </SnackbarProvider>
     </Provider>

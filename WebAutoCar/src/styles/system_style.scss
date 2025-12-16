@@ -1,5 +1,6 @@
 @import url("../styles/system_color.scss");
-
+// @import url('https://fonts.googleapis.com/css2?family=Nokora:wght@100;300;400;700;900&family=Noto+Sans+Khmer:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nokora:wght@100;300;400;700;900&family=Noto+Sans+Khmer:wght@100..900&display=swap');
 .typing-animation {
   /* Required for the typing effect */
   overflow: hidden; /* Hides text outside the width */
@@ -51,4 +52,11 @@
   100% {
     transform: translateX(-50%);
   }
+}
+
+
+*{
+  // font-family: "Noto Sans Khmer", sans-serif;
+   font-family: "Nokora", sans-serif;
+  font-optical-sizing: auto;
 }

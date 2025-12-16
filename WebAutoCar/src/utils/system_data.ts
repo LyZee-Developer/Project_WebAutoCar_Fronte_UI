@@ -65,11 +65,17 @@ const header:HeaderData[] = [
         }
     ] 
 
-const ShowSnackBar=(message:string)=>{
-     enqueueSnackbar(message, {
+const ShowSnackBar=(message:string,type:string="")=>{
+    var backgroundColor = "green";
+    var color = "white";
+    if (type.toLocaleLowerCase()=="error") {
+        backgroundColor="#ffd2d2";
+        color="red";
+    }
+    enqueueSnackbar(message, {
       style: {
-        backgroundColor: 'green', // Set the background color
-        color: 'white', // Set the text color
+        backgroundColor: backgroundColor, // Set the background color
+        color: color, // Set the text color
       },
     });
 

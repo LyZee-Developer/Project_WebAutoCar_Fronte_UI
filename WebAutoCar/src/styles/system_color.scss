@@ -9,6 +9,7 @@
     --color-cnstra-3:rgb(255, 255, 255, 0.70);
     --color-cnstra-4:rgb(255, 255, 255);
     --bg-card:#6363630c;
+    --bg-cnstra-card:#414141;
 }
 .dark{
     --bg:rgb(0, 0, 0);
@@ -21,6 +22,7 @@
     --color-cnstra-3:rgb(0, 0, 0, 0.70);
     --color-cnstra-4:rgb(0, 0, 0);
     --bg-card:#121212;
+    --bg-cnstra-card:#535353;
 }
 body{
     background-color: var(--bg) !important;
@@ -52,5 +54,8 @@ body{
     }
     .color-4{
         color: var(--color-cnstra-4) !important;
+    }
+    .bg-card{
+        background: var(--bg-cnstra-card) !important;
     }
 }

@@ -7,9 +7,7 @@ const BookAppointmentComponent = () => {
     ShowSnackBar("Submit information completely 🎉")
   }
   useEffect(()=>{
-    console.log("Call")
     setYears(getYearsToCurrent())
-    console.log(getYearsToCurrent())
   },[])
   return (
    <div className='w-full p-5 pt-0 flex flex-col gap-y-3'>

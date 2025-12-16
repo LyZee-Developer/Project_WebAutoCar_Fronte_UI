@@ -31,7 +31,7 @@ function App() {
   },[isDark])
 
   useEffect(()=>{
-    console.log("yes")
+    console.log("yes2")
    if(headerType=="home"){
     refheader?.current?.scrollIntoView({ 
       behavior: 'smooth', // Optional: smooth animation

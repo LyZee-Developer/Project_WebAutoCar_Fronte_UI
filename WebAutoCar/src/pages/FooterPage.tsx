@@ -1,15 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import imgfix from '../assets/logo/logor.png'
 import map from '../assets/image/map.png'
-import facebook from '../assets/social/facebook.svg'
-import instagram from '../assets/social/instagram.svg'
-import telegram from '../assets/social/telegram.svg'
-import youtube from '../assets/social/youtube.svg'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
 import { useEffect, useState } from 'react'
-import axios from 'axios';
 import type { InfoOwner } from '../interfaces/system'
 import { setOwnInfo } from '../store/system/SystemStore'
 import { isEmptyData, socials } from '../utils/system_data'
@@ -17,32 +12,41 @@ import { https } from '../utils/https'
 const FooterPage = () => {
     var isDark = useSelector((state:RootState)=>state.system.isDark);
     const dispatch = useDispatch()
+    const [isLoading,setIsLoading]=useState<boolean>(false);
     const onClickOnMap=()=>{
-        console.log("click")
         window.open("https://www.google.com/maps?ll=11.553453,104.821334&z=18&t=m&hl=en&gl=KH&mapclient=embed&cid=14629073525661475694")
     }
+    var hasFetched = false;
     const [info,setInfo] = useState<InfoOwner>()
     // Use an async function inside useEffect for async/await syntax
-    const fetchData = async () => {
-        const response = await https({url:"http://localhost:8989/api/owner_info/list",data:{Id:0,
-            Search:"",
-            OrderBy:"Id",
-            OrderDir:"desc",
-            IsComplete:false,
-            Page:1,
-            Record:10
-        },
+    const getData = async () => {
+        setIsLoading(true);
+        const response = await https({
+            url:"http://localhost:8989/api/owner_info/list",
+            data:{
+                Id:0,
+                Search:"",
+                OrderBy:"Id",
+                OrderDir:"desc",
+                IsComplete:false,
+                Page:1,
+                Record:10
+            },
             method:"post"
         });
-            console.log("->",response.data)
-        if(response.data.length > 0 ){
-            setInfo(response.data[0])
-            dispatch(setOwnInfo(response.data[0]))
-        }
+            console.log("->",response)
+        if(response?.responseData?.data.length > 0 ){
+            setIsLoading(false);
+            setInfo(response?.responseData.data[0])
+            dispatch(setOwnInfo(response?.responseData.data[0]))
+        } 
     };
   useEffect(() => {
-    fetchData();
+    if (hasFetched) return;
+    hasFetched = true;
+    getData();
   }, []); // Empty dependency array ensures it runs once on mount
+
   const onClickSocial=(social:any)=>{
     var link:string | undefined = "";
     if(social.code=="facebook") link=info?.FaceboolURL;
@@ -62,27 +66,42 @@ const FooterPage = () => {
                 <div className='flex gap-x-4'>
                     {
                         socials.map(val=><>
-                            <div className='w-[40px] h-[40px] rounded-full' onClick={()=>onClickSocial(val)}>
+                            {
+                                !isLoading?(<><div className='w-[40px] h-[40px] rounded-full' onClick={()=>onClickSocial(val)}>
                                 <img src={val.img} alt=""  className='w-full h-full object-contain' />
+                            </div></>):(<div className='constrast '>
+                            <div className='w-[40px] h-[40px]   bg-card animate-pulse rounded-full ' >
                             </div>
+                            </div>)
+                            }
                         </>)
                     }
                 </div>
             </div>
             <div className={`w-full h-full   flex flex-col gap-y-4 `}>
                 <div className='color-2'>Our Service</div>
-                <div className='flex flex-col gap-y-3 font-bold text-[18px]'>
+                {
+                    !isLoading?(<><div className='flex flex-col gap-y-3 font-bold text-[18px]'>
                     <div className='color-3'>Service</div>
                     <div className='color-3'>Repairs</div>
                     <div className='color-3'>Diagnostics</div>
                     <div className='color-3'>Tuning & Performance Upgrade</div>
                     <div className='color-3'>ECU/TCU Remapping</div>
                     <div className='color-3'>Genuine Parts Replacemen</div>
-                </div>
+                </div></>):(<><div className={`flex constrast flex-col gap-y-3 font-bold text-[18px]`}>
+                    <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                    <div className='w-[180px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                    <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                    <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                    <div className='w-[100px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                    <div className='w-[180px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                </div></>)
+                }
             </div>
             <div className={`w-full h-full   flex flex-col gap-y-4 `}>
                 <div className='color-2'>Contact Us</div>
-                <div className='flex gap-y-3 flex-col '>
+                {
+                    !isLoading?(<><div className='flex gap-y-3 flex-col '>
                     <div className='flex gap-x-3 color-3 '>
                         <div>
                             <FontAwesomeIcon icon={faPhone} />
@@ -114,13 +133,44 @@ const FooterPage = () => {
                             <div className='text-[18px] color-4'>{info?.Email}</div>
                         </div>
                     </div>
-                </div>
+                </div></>):(<><div className='flex constrast gap-y-3 flex-col '>
+                    <div className='flex gap-x-3 color-3 '>
+                        <div>
+                            <FontAwesomeIcon icon={faPhone} />
+                        </div>
+                        <div className='flex flex-col  gap-y-3'>
+                             <div className='w-[80px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                              <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                        </div>
+                    </div>
+                    <div className='flex gap-x-3 color-3 '>
+                        <div>
+                            <FontAwesomeIcon icon={faPhone} />
+                        </div>
+                        <div className='flex flex-col gap-y-3'>
+                             <div className='w-[80px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                              <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                        </div>
+                    </div>
+                    <div className='flex gap-x-3 color-3 '>
+                        <div>
+                           <FontAwesomeIcon icon={faEnvelope} />
+                        </div>
+                        <div className='flex flex-col gap-y-3'>
+                             <div className='w-[80px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                              <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                        </div>
+                    </div>
+                </div></>)
+                }
             </div>
-            <div className="w-full h-full color-4 group relative cursor-pointer" onClick={()=>onClickOnMap()} >
+            {!isLoading?(<><div className="w-full h-full color-4 group relative cursor-pointer" onClick={()=>onClickOnMap()} >
                 <img src={map} alt="" />
                 <div className='w-full h-full transition-all ease-in-out group-hover:opacity-100 opacity-0 bg-[#00000067]  absolute top-0 left-0'></div>
                 <div className='absolute left-1/2 top-1/2 -translate-y-1/2 group-hover:opacity-100! opacity-0 -translate-x-1/2 text-white'>Click to preview location</div>
-            </div>
+            </div></>):(<div className='constrast'>
+            <div className="w-[400px]   h-[150px]  rounded-xl animate-pulse bg-card color-4 group relative cursor-pointer" >
+            </div></div>)}
            
         </div>
     </div>
