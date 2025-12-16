@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import imgfix from '../assets/logo/HengeAuto_logo_2_ecbbd5df-ddc1-401a-bab7-050678068128.webp'
+import imgfix from '../assets/logo/logor.png'
 import map from '../assets/image/map.png'
 import facebook from '../assets/social/facebook.svg'
 import instagram from '../assets/social/instagram.svg'

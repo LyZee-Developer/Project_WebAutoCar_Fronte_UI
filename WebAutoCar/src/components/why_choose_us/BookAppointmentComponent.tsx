@@ -1,19 +1,22 @@
-import { FieldError, Input, Label, ListBox,Select, TextArea, TextField } from "@heroui/react"
-import { getYearsToCurrent } from "../../utils/system_data"
+import { Button, Description, FieldError, Input, Label, ListBox,Select, TextArea, TextField } from "@heroui/react"
+import { getYearsToCurrent, ShowSnackBar } from "../../utils/system_data"
 import { useEffect, useState } from "react"
 const BookAppointmentComponent = () => {
   const [Years,setYears] = useState<number[]>([]);
+  const OnSubmit=()=>{
+    ShowSnackBar("Submit information completely 🎉")
+  }
   useEffect(()=>{
     console.log("Call")
     setYears(getYearsToCurrent())
     console.log(getYearsToCurrent())
   },[])
   return (
-   <div className='w-full p-5 flex flex-col gap-y-3'>
+   <div className='w-full p-5 pt-0 flex flex-col gap-y-3'>
     <h1 className="color-4 text-[40px] font-bold">Booking Your Appointment Today!</h1>
     <div  className="color-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam at iusto suscipit dolores reiciendis rem vitae molestiae et doloribus excepturi numquam quod doloremque dolorum deserunt minus vel, voluptates eos? Possimus?</div>
     <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
-      <TextField className="w-full" isInvalid={true} name="fullname" type="text">
+      <TextField isRequired className="w-full" isInvalid={false} name="fullname" type="text">
           <Label>Full Name</Label>
           <Input placeholder="Ly leang seng" className="h-[50px]" />
           <FieldError>Full name is required!</FieldError>
@@ -22,7 +25,7 @@ const BookAppointmentComponent = () => {
           <Label>Email</Label>
           <Input placeholder="lyleangseng@gmail.com" className="h-[50px]" />
       </TextField>
-      <TextField className="w-full " isInvalid={true} name="phone" type="text">
+      <TextField isRequired className="w-full " isInvalid={false} name="phone" type="text">
           <Label>Phone</Label>
           <Input placeholder="015 844 712" className="h-[50px]" />
           <FieldError>Phone number is required!</FieldError>
@@ -36,7 +39,7 @@ const BookAppointmentComponent = () => {
     <div className="color-4 text-[25px] font-bold border-b-2 border-[#ffffff80] mt-4 border-dashed"></div>
 
     <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
-      <Select className="w-full" placeholder="Select one">
+      <Select  selectionMode="multiple"  isRequired className="w-full" placeholder="Select multi">
       <Label>Car</Label>
       <Select.Trigger className="h-[50px]">
         <Select.Value />
@@ -71,7 +74,7 @@ const BookAppointmentComponent = () => {
         </ListBox>
       </Select.Popover>
     </Select>
-    <Select className="w-full" placeholder="Select one">
+    <Select  selectionMode="multiple" isRequired className="w-full" placeholder="Select multi">
       <Label>Service</Label>
       <Select.Trigger className="h-[50px]">
         <Select.Value />
@@ -107,17 +110,20 @@ const BookAppointmentComponent = () => {
         })}
         </ListBox>
       </Select.Popover>
+        <Description>Select year of car</Description>
     </Select>
     
     </div>
     <div className="w-full">
-       <Label>Problem</Label>
-        <TextArea
+       <Label >Problem</Label>
+        <TextArea  required={true}
         aria-label="Quick project update"
         className="w-full h-[100px]"
         placeholder="Enter your problem of car..."
       />
+     
     </div>
+    <div><Button className="w-full h-[50px] rounded-xl text-[17px]" onClick={OnSubmit}>Submit Our Problem</Button></div>
   </div>
   )
 }

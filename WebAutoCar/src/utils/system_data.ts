@@ -1,3 +1,4 @@
+import { enqueueSnackbar } from "notistack";
 import type { HeaderData } from "../interfaces/system";
 const currentYear: number = new Date().getFullYear();
 const getYearsToCurrent = ():number[]=>{
@@ -30,9 +31,24 @@ const header:HeaderData[] = [
             titleEnglish:"About Us"
         },
         {
+            code:"portfolio",
+            title:"Portfolio",
+            titleEnglish:"Portfolio"
+        },
+        {
             code:"contact_us",
             title:"Contact Us",
             titleEnglish:"Contact Us"
         }
     ] 
-export {header as data_header,getYearsToCurrent};
+
+const ShowSnackBar=(message:string)=>{
+     enqueueSnackbar(message, {
+      style: {
+        backgroundColor: 'green', // Set the background color
+        color: 'white', // Set the text color
+      },
+    });
+
+}
+export {header as data_header,getYearsToCurrent,ShowSnackBar};

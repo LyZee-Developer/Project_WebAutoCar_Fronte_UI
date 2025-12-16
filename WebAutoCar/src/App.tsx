@@ -6,6 +6,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import './styles/modify_style.scss'
 import type { RootState } from './store/store';
 import { useEffect, useRef } from 'react';
 import HeroSectionComponent from './components/HeroSectionComponent';
@@ -14,6 +15,7 @@ import AboutUSComponent from './components/AboutUSComponent';
 import SlideMenuComponent from './components/SlideMenuComponent';
 import WhyChooseUsPage from './pages/WhyChooseUsPage';
 import FooterPage from './pages/FooterPage';
+import PortfolioPage from './pages/PortfolioPage';
 function App() {
   const isDark = useSelector((state:RootState)=>state.system.isDark);
   const headerType = useSelector((state:RootState)=>state.system.headerType);
@@ -21,6 +23,7 @@ function App() {
   const reffooter = useRef<HTMLDivElement | null>(null);
   const refheader = useRef<HTMLDivElement | null>(null);
   const refwhychoose = useRef<HTMLDivElement | null>(null);
+  const portfolio = useRef<HTMLDivElement | null>(null);
   const refaboutus = useRef<HTMLDivElement | null>(null);
   useEffect(()=>{
     if(isDark) document.body.classList.add(`dark`);
@@ -47,6 +50,12 @@ function App() {
       block: 'start'      // Optional: align the top of the element to the top of the viewport
     });
    }
+   else if(headerType=="portfolio"){
+     portfolio?.current?.scrollIntoView({ 
+      behavior: 'smooth', // Optional: smooth animation
+      block: 'start'      // Optional: align the top of the element to the top of the viewport
+    });
+   }
    else if(headerType=="our_work" || headerType=="contact_us"){
      refwhychoose?.current?.scrollIntoView({ 
       behavior: 'smooth', // Optional: smooth animation
@@ -64,6 +73,7 @@ function App() {
         <div ref={refservice}><ServiceComponent /></div>
         <div ref={refaboutus}><AboutUSComponent /></div>
         <div ref={refwhychoose}><WhyChooseUsPage /></div>
+        <div ref={portfolio}><PortfolioPage /></div>
         <div ref={reffooter}><FooterPage /></div>
       </div>
     </>
