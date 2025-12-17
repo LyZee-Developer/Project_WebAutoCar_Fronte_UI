@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import imgfix from '../assets/image/fixcar.webp'
+import imgfix from '../assets/service/prop.jpg'
 import type { RootState } from '../store/store'
 import logor from '../assets/logo/logor.png'
 const AboutUSComponent = () => {

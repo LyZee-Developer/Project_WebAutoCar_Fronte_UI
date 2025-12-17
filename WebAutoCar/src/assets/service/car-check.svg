@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="CarCheck">
+  <path d="M59,5H5A3.009,3.009,0,0,0,2,8V45a3.009,3.009,0,0,0,3,3H24v3H20a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1H44a1,1,0,0,0,1-1V52a1,1,0,0,0-1-1H40V48H59a3.009,3.009,0,0,0,3-3V8A3.009,3.009,0,0,0,59,5ZM43,53v4H21V53ZM26,51V48H38v3Zm34-6a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V43H60Zm0-4H4V8A1,1,0,0,1,5,7H59a1,1,0,0,1,1,1Z" fill="#009cd9" class="color000000 svgShape"></path>
+  <path d="M35 19V14a3.009 3.009 0 0 0-3-3H14a3.009 3.009 0 0 0-3 3v5a3.009 3.009 0 0 0-3 3V32a1 1 0 0 0 1 1v2a2.006 2.006 0 0 0 2 2h4a2.006 2.006 0 0 0 2-2V33H29v2a2.006 2.006 0 0 0 2 2h4a2.006 2.006 0 0 0 2-2V33a1 1 0 0 0 1-1V22A3.009 3.009 0 0 0 35 19zM13 14a1 1 0 0 1 1-1H32a1 1 0 0 1 1 1v5H13zM10 25h5v2H10zm5 10H11V33h4zm20 0H31V33h4zm1-4H10V29H36zM17 27V25H29v2zm19 0H31V25h5zm0-4H10V22a1 1 0 0 1 1-1H35a1 1 0 0 1 1 1zM51 17h4a1 1 0 0 0 1-1V12a1 1 0 0 0-1-1H51a1 1 0 0 0-1 1v4A1 1 0 0 0 51 17zm1-4h2v2H52zM51 27h4a1 1 0 0 0 1-1V22a1 1 0 0 0-1-1H51a1 1 0 0 0-1 1v4A1 1 0 0 0 51 27zm1-4h2v2H52zM51 37h4a1 1 0 0 0 1-1V32a1 1 0 0 0-1-1H51a1 1 0 0 0-1 1v4A1 1 0 0 0 51 37zm1-4h2v2H52z" fill="#009cd9" class="color000000 svgShape"></path>
+  <rect width="8" height="2" x="40" y="23" fill="#009cd9" class="color000000 svgShape"></rect>
+  <rect width="8" height="2" x="40" y="33" fill="#009cd9" class="color000000 svgShape"></rect>
+  <rect width="8" height="2" x="40" y="13" fill="#009cd9" class="color000000 svgShape"></rect>
+</svg>

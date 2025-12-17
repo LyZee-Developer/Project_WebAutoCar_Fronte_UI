@@ -12,10 +12,39 @@ import { useEffect, useRef, useState } from "react";
 // import 'swiper/bundle';
 // const swiper = useSwiper();
 import type { Swiper as SwiperType } from "swiper";
-import { duration, socials } from "../utils/system_data";
+import { duration, ShowSnackBar, socials } from "../utils/system_data";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store/store";
+import { https } from "../utils/https";
+import type { Portfolio } from "../interfaces/portfolio/data";
 const PortfolioPage = () => {
+    const [ldata,setLData] = useState<Portfolio[]>([]);
+    const [isLoading,setIsLoading]=useState<boolean>(false);
+    const getData = async () => {
+        setIsLoading(true);
+        const {data,error} = await https({
+            url:"http://localhost:8989/api/portfolio/list",
+            data:{
+                Id:0,
+                Search:"",
+                OrderBy:"Id",
+                OrderDir:"desc",
+                IsComplete:false,
+                Page:1,
+                Record:10
+            },
+            method:"post"
+        });
+        console.log("data",data)
+        if(data.length > 0 ){
+            setIsLoading(false); 
+            if (data!=undefined) setLData(data)
+        } else if(error!=undefined) ShowSnackBar(error)
+    };
+   
+    useEffect(() => {
+        getData();
+    }, []); // Empty dependency array ensures it runs once on mount
     const swiperRef = useRef<SwiperType | null>(null);
     const info:any = useSelector((state:RootState)=>state.system.ownInfo)
     var Duration=2000;
@@ -71,11 +100,11 @@ const PortfolioPage = () => {
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => swiperRef.current = swiper}
             >
-                {[2,3,4,5,6,3,4,5,6,7,2].map(val=>{
+                {ldata.map(val=>{
                     Duration=duration[Math.floor(Math.random()*duration.length)];
                     return (
                         <>
-                        <SwiperSlide key={val} className="h-full w-full bg-card">
+                        <SwiperSlide key={val.Id} className="h-full w-full bg-card">
                                 <Swiper
                                     className="h-full w-full"
                                     modules={[Navigation,Autoplay, Pagination]}
@@ -87,8 +116,8 @@ const PortfolioPage = () => {
                                     pagination={{ clickable: true }}
                                 >
                                     {
-                                        [1,2,3,4].map(v=><SwiperSlide key={v} className="w-full h-full flex justify-center items-center">
-                                            <img src={imagcar} alt="" className="object-contain w-full h-full" />
+                                        val.Images.map(v=><SwiperSlide key={v.Id} className="w-full h-full flex justify-center items-center">
+                                            <img src={`${v.HostUrl}/${v.PathImage}`} alt="" className="object-contain w-full h-full" />
                                         </SwiperSlide>)
                                     }
                                 </Swiper>

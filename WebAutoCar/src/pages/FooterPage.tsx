@@ -21,7 +21,7 @@ const FooterPage = () => {
     // Use an async function inside useEffect for async/await syntax
     const getData = async () => {
         setIsLoading(true);
-        const response = await https({
+        const {data,error} = await https({
             url:"http://localhost:8989/api/owner_info/list",
             data:{
                 Id:0,
@@ -34,11 +34,11 @@ const FooterPage = () => {
             },
             method:"post"
         });
-            console.log("->",response)
-        if(response?.responseData?.data.length > 0 ){
+            console.log("->",data)
+        if(data.length > 0 ){
             setIsLoading(false);
-            setInfo(response?.responseData.data[0])
-            dispatch(setOwnInfo(response?.responseData.data[0]))
+            setInfo(data[0])
+            dispatch(setOwnInfo(data[0]))
         } 
     };
   useEffect(() => {

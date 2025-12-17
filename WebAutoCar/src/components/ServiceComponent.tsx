@@ -5,13 +5,23 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { https } from '../utils/https'
 import type { IServiceData, IServiceDetail } from '../interfaces/system'
+import { ui } from '../utils/GlobalHelper'
+import { ShowSnackBar } from '../utils/system_data'
+import service1 from '../assets/service/car-check.svg'
+import website from '../assets/service/car-website.svg'
+import save from '../assets/service/save-water.svg'
+import screwdriver from '../assets/service/screwdriver.svg'
+import wrench from '../assets/service/wrench.svg'
+import accumulator from '../assets/service/accumulator.svg'
+
 const ServiceComponent = () => {
-    const [data,setData] = useState<IServiceData>();
+    const [list,setList] = useState<IServiceData>();
     const [listService,setListService] = useState<IServiceDetail[]>([]);
     const [isLoading,setIsLoading]=useState<boolean>(false);
+    var imageService = [service1,website,save,screwdriver,wrench,accumulator];
     const getData = async () => {
         setIsLoading(true);
-        const response = await https({
+        const {data ,error} = await https({
             url:"http://localhost:8989/api/block_content/list",
             data:{
                 Id:0,
@@ -24,14 +34,14 @@ const ServiceComponent = () => {
             },
             method:"post"
         });
-        if(response?.responseData?.data.length > 0 ){
+        if(data.length > 0 ){
             setIsLoading(false);
-            var checkList = response?.responseData?.data?.filter((v:any)=>v.Type=="Service");
-            if (checkList.length>0) setData(checkList[0])
+            var checkList = data?.filter((v:any)=>v.Type=="Service");
+            if (checkList.length>0) setList(checkList[0])
         } 
     };
     const getListService = async () => {
-        const response = await https({
+        const {data,error} = await https({
             url:"http://localhost:8989/api/block_content_detail/list",
             data:{
                 Id:0,
@@ -41,15 +51,17 @@ const ServiceComponent = () => {
                 IsComplete:true,
                 Page:1,
                 Record:10,
-                ContentBlockId:data?.Id
+                ContentBlockId:list?.Id
             },
             method:"post"
         });
-        if(response?.responseData?.data.length > 0 ){
+        if(data.length > 0 ){
             setIsLoading(false);
-            setListService(response?.responseData?.data)
-            console.log(response?.responseData?.data)
-        } 
+            setListService(data)
+            console.log(data)
+        }else {
+            if(error!=undefined) ShowSnackBar(error)
+        }
     };
   useEffect(() => {
     getData();
@@ -57,21 +69,29 @@ const ServiceComponent = () => {
 
   useEffect(() => {
     getListService();
-  }, [data]); // Empty dependency array ensures it runs once on mount
+  }, [list]); // Empty dependency array ensures it runs once on mount
   return (
     <div>
         <div className="w-full flex justify-center flex-col items-center gap-y-2  pb-10 px-[20px] pt-20">
-            <h3 className="font-medium color-3">Our Service</h3>
-            <h1 className="text-[30px] font-bold color-4">{data?.Title}</h1>
-            <div className="max-w-[800px] text-center color-2"><p>{data?.Description}</p></div>
+            {
+                !isLoading?(<><h3 className="font-medium color-3">Our Service</h3>
+            <h1 className="text-[30px] font-bold color-4">{list?.Title}</h1>
+            <div className="max-w-[800px] text-center color-2"><p>{list?.Description}</p></div></>):(
+            <div className='flex flex-col w-full justify-center items-center gap-y-3'>
+                <div className={`w-[100px] h-[10px] ${ui.animation}`}></div>
+                <div className={`max-w-[800px] w-full h-[30px] ${ui.animation}`}></div>
+                <div className={`max-w-[800px] w-full h-[14px] ${ui.animation}`}></div>
+                <div className={`max-w-[500px] w-full h-[14px] ${ui.animation}`}></div>
+            </div>)
+            }
         </div>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(330px,1fr))] gap-7 max-w-[1000px] mx-auto px-[20px]">
+        <div className={`grid grid-cols-[repeat(auto-fill,minmax(330px,1fr))]  gap-7 max-w-[1000px] mx-auto px-[20px]`}>
             {
                 listService.length>0?(<>
                 {
-                    listService.map(val=>(
+                    listService.map((val,index)=>(
                     <div className={`bg-card  flex flex-col gap-y-4 w-full p-5 rounded-2xl ${val}`}>
-                        <div className='w-[45px] h-[45px]'> <img className='w-full h-full' src={service} alt="" /></div>
+                        <div className='w-[45px] h-[45px]'> <img className='w-full h-full' src={imageService[index]} alt="" /></div>
                         <div>
                             <div className='font-bold text-[20px] color-4'>{val.Title}</div>
                             <div className='color-3'>{val?.Description}</div>
@@ -79,9 +99,10 @@ const ServiceComponent = () => {
                     </div>))
                 }
                 </>):(<>
-                    <div className={`bg-card flex justify-center items-center w-full p-5 rounded-2xl `}>
-                            No data
-                    </div>
+                   {
+                     [1,2,3,4].map(val=><div className={`${ui.animation} ${val} h-[150px] flex flex-col gap-y-4 w-full p-5 rounded-2xl `}>
+                    </div>)
+                   }
                 </>)
                 
             }

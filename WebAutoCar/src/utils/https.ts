@@ -1,34 +1,28 @@
 import axios from "axios";
-import { ShowSnackBar } from "./system_data";
-
 const https  =async (api : {url:string,method:string,data:Object})=>{
     var responseData:any = "";
     var isSuccess:boolean = false;
     if(api.method.toLocaleLowerCase()=="get"){
-       const response = axios.get(api.url).catch((error) =>{
+        responseData= axios.get(api.url).catch((error) =>{
             var err = error.toJSON();
-            // ShowSnackBar(error.message)
             isSuccess=true;
             if(err.code=="ERR_NETWORK"){
-                ShowSnackBar(err.message,"error")
                 isSuccess=false;
+                return {data:undefined,error:err,isSuccess:isSuccess}
             } 
         });
-        
-        responseData = response;
+        return {data:responseData,error:undefined,isSuccess:isSuccess}
     }
     else{
-        const response = await axios.post(api.url,{...api.data}).catch((error) =>{
+        responseData= await axios.post(api.url,{...api.data}).catch((error) =>{
             var err = error.toJSON();
             isSuccess=true;
             if(err.code=="ERR_NETWORK"){
-                ShowSnackBar(err.message,"error")
                 isSuccess=false;
+                return {data:undefined,error:err,isSuccess:isSuccess}
             }
         });
-        
-        responseData = response;
+        return {data:responseData?.data,error:undefined,isSuccess:isSuccess}
     } 
-    return {responseData,isSuccess:isSuccess};
 }
 export {https};
