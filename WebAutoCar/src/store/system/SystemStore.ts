@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import type { SystemState } from "../../interfaces/system";
+const initialState : SystemState ={
+    isDark : true,
+    isShowNavLeftMenu:false,
+    headerType:"",
+    ownInfo: {},
+    services:[],
+}
 const ThemeStore = createSlice({
     name:"theme",
-    initialState:{
-        isDark : true,
-        isShowNavLeftMenu:false,
-        headerType:"",
-        ownInfo:{}
-    },
+    initialState,
     reducers:{
         changeTheme :(state,actions)=>{
             state.isDark=actions.payload;
@@ -20,8 +22,11 @@ const ThemeStore = createSlice({
         },
         setOwnInfo :(state,actions)=>{
             state.ownInfo=actions.payload;
+        },
+        setDataService :(state,actions)=>{
+            state.services=actions.payload;
         }
     }
 })
-export const {changeTheme,setIsShowNavLeftMenu,SelectHeaderAction,setOwnInfo} = ThemeStore.actions
+export const {changeTheme,setIsShowNavLeftMenu,SelectHeaderAction,setOwnInfo,setDataService} = ThemeStore.actions
 export default ThemeStore.reducer;

@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../store/store";
 import { https } from "../utils/https";
 import type { Portfolio } from "../interfaces/portfolio/data";
+import { ui } from "../utils/GlobalHelper";
 const PortfolioPage = () => {
     const [ldata,setLData] = useState<Portfolio[]>([]);
     const [isLoading,setIsLoading]=useState<boolean>(false);
@@ -92,19 +93,61 @@ const PortfolioPage = () => {
             </div>
         </div>
         <div className="w-full px-10 select-none cursor-pointer">
-            <Swiper
-            spaceBetween={30}
-            className="h-[400px] "
-            slidesPerView={rowSlide}
-            
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => swiperRef.current = swiper}
-            >
-                {ldata.map(val=>{
-                    Duration=duration[Math.floor(Math.random()*duration.length)];
-                    return (
-                        <>
-                        <SwiperSlide key={val.Id} className="h-full w-full bg-card">
+            {
+               ldata.length>0 && !isLoading?(<>
+                <Swiper
+                    spaceBetween={30}
+                    className="h-[400px] "
+                    slidesPerView={rowSlide}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => swiperRef.current = swiper}
+                >
+
+                 {
+                        ldata.map(val=>{
+                                Duration=duration[Math.floor(Math.random()*duration.length)];
+                                return (
+                                    <>
+                                    <SwiperSlide key={val.Id} className="h-full w-full bg-card">
+                                            <Swiper
+                                                className="h-full w-full"
+                                                modules={[Navigation,Autoplay, Pagination]}
+                                                autoplay={{
+                                                    delay: Duration,
+                                                    disableOnInteraction: false,
+                                                }}
+                                                navigation
+                                                pagination={{ clickable: true }}
+                                            >
+                                                {
+                                                    !isLoading?(<>
+                                                        {
+                                                        val.Images.map(v=><SwiperSlide key={v.Id} className="w-full h-full flex justify-center items-center">
+                                                            <img src={`${v.HostUrl}/${v.PathImage}`} alt="" className="object-contain w-full h-full" />
+                                                        </SwiperSlide>)
+                                                        }
+                                                    </>):(<>
+                                                        {[1,2,3,4,5].map(val=>(<div className={`w-full h-[300px] ${ui.animation} `}>
+                                                        </div>))}
+                                                    </>) 
+                                                }
+                                            </Swiper>
+                                    </SwiperSlide>
+                                    </>
+                                )
+                            })
+                    }   
+                    
+                </Swiper>
+               </>):(<>
+                <Swiper
+                    spaceBetween={30}
+                    className="h-[400px] "
+                    slidesPerView={rowSlide}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => swiperRef.current = swiper}
+                >
+                        <SwiperSlide className="h-full w-full bg-card">
                                 <Swiper
                                     className="h-full w-full"
                                     modules={[Navigation,Autoplay, Pagination]}
@@ -116,17 +159,16 @@ const PortfolioPage = () => {
                                     pagination={{ clickable: true }}
                                 >
                                     {
-                                        val.Images.map(v=><SwiperSlide key={v.Id} className="w-full h-full flex justify-center items-center">
-                                            <img src={`${v.HostUrl}/${v.PathImage}`} alt="" className="object-contain w-full h-full" />
-                                        </SwiperSlide>)
+                                    [1,2,3,4,5].map(val=>(<div className={`w-full h-[300px] ${ui.animation} `}>
+                                            </div>))
                                     }
                                 </Swiper>
                         </SwiperSlide>
-                        </>
-                    )
-                })}
-                
-            </Swiper>
+                    </Swiper>
+               
+               </>) 
+            }
+              
         </div>
         <div className="w-full flex py-5 flex-col gap-y-3 justify-center items-center">
             <div className="text-[20px] color-3 px-5">

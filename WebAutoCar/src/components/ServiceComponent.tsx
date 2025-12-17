@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { https } from '../utils/https'
-import type { IServiceData, IServiceDetail } from '../interfaces/system'
 import { ui } from '../utils/GlobalHelper'
 import { ShowSnackBar } from '../utils/system_data'
 import service1 from '../assets/service/car-check.svg'
@@ -13,11 +12,15 @@ import save from '../assets/service/save-water.svg'
 import screwdriver from '../assets/service/screwdriver.svg'
 import wrench from '../assets/service/wrench.svg'
 import accumulator from '../assets/service/accumulator.svg'
+import type { IServiceData, IServiceDetail } from '../interfaces/service/service'
+import { useDispatch } from 'react-redux'
+import { setDataService } from '../store/system/SystemStore'
 
 const ServiceComponent = () => {
     const [list,setList] = useState<IServiceData>();
     const [listService,setListService] = useState<IServiceDetail[]>([]);
     const [isLoading,setIsLoading]=useState<boolean>(false);
+    const dispatch = useDispatch();
     var imageService = [service1,website,save,screwdriver,wrench,accumulator];
     const getData = async () => {
         setIsLoading(true);
@@ -58,6 +61,7 @@ const ServiceComponent = () => {
         if(data.length > 0 ){
             setIsLoading(false);
             setListService(data)
+            dispatch(setDataService(data));
             console.log(data)
         }else {
             if(error!=undefined) ShowSnackBar(error)

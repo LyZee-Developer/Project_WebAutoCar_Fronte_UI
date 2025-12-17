@@ -5,10 +5,10 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
 import { useEffect, useState } from 'react'
-import type { InfoOwner } from '../interfaces/system'
 import { setOwnInfo } from '../store/system/SystemStore'
-import { isEmptyData, socials } from '../utils/system_data'
+import { socials } from '../utils/system_data'
 import { https } from '../utils/https'
+import type { IOwnerInfo } from '../interfaces/info/info'
 const FooterPage = () => {
     var isDark = useSelector((state:RootState)=>state.system.isDark);
     const dispatch = useDispatch()
@@ -17,7 +17,8 @@ const FooterPage = () => {
         window.open("https://www.google.com/maps?ll=11.553453,104.821334&z=18&t=m&hl=en&gl=KH&mapclient=embed&cid=14629073525661475694")
     }
     var hasFetched = false;
-    const [info,setInfo] = useState<InfoOwner>()
+    const [info,setInfo] = useState<IOwnerInfo>()
+    var serviceList = useSelector((state:RootState)=>state.system.services);
     // Use an async function inside useEffect for async/await syntax
     const getData = async () => {
         setIsLoading(true);
@@ -81,13 +82,17 @@ const FooterPage = () => {
             <div className={`w-full h-full   flex flex-col gap-y-4 `}>
                 <div className='color-2'>Our Service</div>
                 {
-                    !isLoading?(<><div className='flex flex-col gap-y-3 font-bold text-[18px]'>
-                    <div className='color-3'>Service</div>
-                    <div className='color-3'>Repairs</div>
-                    <div className='color-3'>Diagnostics</div>
-                    <div className='color-3'>Tuning & Performance Upgrade</div>
-                    <div className='color-3'>ECU/TCU Remapping</div>
-                    <div className='color-3'>Genuine Parts Replacemen</div>
+                    !isLoading?(<>
+                    <div className='flex flex-col gap-y-3 font-bold text-[18px]'>
+                        {
+                            serviceList.length>0?(<>
+                                {
+                                    [...serviceList].slice(0,6).map(val=>(<>
+                                        <div className='color-3'>{val.Title}</div>
+                                    </>))
+                                }
+                            </>):(<></>)
+                        }
                 </div></>):(<><div className={`flex constrast flex-col gap-y-3 font-bold text-[18px]`}>
                     <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
                     <div className='w-[180px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
