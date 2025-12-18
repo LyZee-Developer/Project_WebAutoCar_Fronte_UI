@@ -1,7 +1,4 @@
 // import { Button } from '@heroui/react'
-import service from '../assets/image/maintenance.svg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { https } from '../utils/https'
 import { ui } from '../utils/GlobalHelper'
@@ -27,7 +24,7 @@ const ServiceComponent = () => {
     var imageService = [service1,website,save,screwdriver,wrench,accumulator,setting];
     const getData = async () => {
         setIsLoading(true);
-        const {data ,error} = await https({
+        const {data} = await https({
             url:"http://localhost:8989/api/block_content/list",
             data:{
                 Id:0,

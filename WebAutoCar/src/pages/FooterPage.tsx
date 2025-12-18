@@ -24,7 +24,7 @@ const FooterPage = () => {
     // Use an async function inside useEffect for async/await syntax
     const getData = async () => {
         setIsLoading(true);
-        const {data,error} = await https({
+        const {data} = await https({
             url:"http://localhost:8989/api/owner_info/list",
             data:{
                 Id:0,

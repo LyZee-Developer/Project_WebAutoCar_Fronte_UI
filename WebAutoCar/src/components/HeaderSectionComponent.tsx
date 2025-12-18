@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logor from '../assets/logo/logor.png'
-import { faBarsStaggered, faGlobe, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faBarsStaggered, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
 import { changeTheme, SelectHeaderAction, setCountry, setIsShowNavLeftMenu } from '../store/system/SystemStore'
@@ -25,6 +25,7 @@ const HeaderSectionComponent=()=> {
     dispatch(setIsShowNavLeftMenu(!isShowNavLeftMenu))
   }
   const handleScroll=(e:any)=>{
+    console.log(e)
     console.log("window.scrollY",window.scrollY)
   }
   useEffect(() => {

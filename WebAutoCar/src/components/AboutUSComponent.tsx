@@ -13,7 +13,7 @@ const AboutUSComponent = () => {
     const [isLoading,setIsLoading]=useState<boolean>(false);
     const getData = async () => {
         setIsLoading(true);
-        const {data ,error} = await https({
+        const {data} = await https({
             url:"http://localhost:8989/api/partner_support/list",
             data:{
                 Id:0,
@@ -56,10 +56,6 @@ const AboutUSComponent = () => {
     //         if(error!=undefined) ShowSnackBar(error)
     //     }
     // };
-    const onErrorImage=(error:any)=>{
-        console.log(error)
-        error.currentTarget.src = noimage;
-    }
   useEffect(() => {
     getData();
   }, []); // Empty dependency array ensures it runs once on mount

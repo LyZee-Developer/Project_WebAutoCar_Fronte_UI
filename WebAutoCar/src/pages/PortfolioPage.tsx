@@ -2,7 +2,6 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import imagcar from '../assets/image/bmw-white.png'
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -12,7 +11,7 @@ import { useEffect, useRef, useState } from "react";
 // import 'swiper/bundle';
 // const swiper = useSwiper();
 import type { Swiper as SwiperType } from "swiper";
-import { duration, ShowSnackBar, socials } from "../utils/system_data";
+import { duration, ShowSnackBar } from "../utils/system_data";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store/store";
 import { https } from "../utils/https";
@@ -47,7 +46,6 @@ const PortfolioPage = () => {
         getData();
     }, []); // Empty dependency array ensures it runs once on mount
     const swiperRef = useRef<SwiperType | null>(null);
-    const info:any = useSelector((state:RootState)=>state.system.ownInfo)
     const tr = useSelector((state:RootState)=>state.system.language);
     var Duration=2000;
     const onClickBack=(behavior:string)=>{
@@ -128,7 +126,7 @@ const PortfolioPage = () => {
                                                         </SwiperSlide>)
                                                         }
                                                     </>):(<>
-                                                        {[1,2,3,4,5].map(val=>(<div className={`w-full h-[300px] ${ui.animation} `}>
+                                                        {[1,2,3,4,5].map(val=>(<div className={`w-full ${val}  h-[300px] ${ui.animation} `}>
                                                         </div>))}
                                                     </>) 
                                                 }
@@ -160,7 +158,7 @@ const PortfolioPage = () => {
                                     pagination={{ clickable: true }}
                                 >
                                     {
-                                    [1,2,3,4,5].map(val=>(<div className={`w-full h-[300px] ${ui.animation} `}>
+                                    [1,2,3,4,5].map(val=>(<div className={`w-full ${val} h-[300px] ${ui.animation} `}>
                                             </div>))
                                     }
                                 </Swiper>
