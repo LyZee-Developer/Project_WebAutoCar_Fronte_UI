@@ -9,8 +9,10 @@ import { setOwnInfo } from '../store/system/SystemStore'
 import { socials } from '../utils/system_data'
 import { https } from '../utils/https'
 import type { IOwnerInfo } from '../interfaces/info/info'
+import { translate } from '../utils/GlobalHelper'
 const FooterPage = () => {
     var isDark = useSelector((state:RootState)=>state.system.isDark);
+    const tr = useSelector((state:RootState)=>state.system.language);
     const dispatch = useDispatch()
     const [isLoading,setIsLoading]=useState<boolean>(false);
     const onClickOnMap=()=>{
@@ -80,15 +82,15 @@ const FooterPage = () => {
                 </div>
             </div>
             <div className={`w-full h-full   flex flex-col gap-y-4 `}>
-                <div className='color-2'>Our Service</div>
+                <div className='color-2'>{tr.our_service}</div>
                 {
                     !isLoading?(<>
-                    <div className='flex flex-col gap-y-3 font-bold text-[18px]'>
+                    <div className='flex flex-col gap-y-3  text-[16px]'>
                         {
                             serviceList.length>0?(<>
                                 {
                                     [...serviceList].slice(0,6).map(val=>(<>
-                                        <div className='color-3'>{val.Title}</div>
+                                        <div className='color-3'>{ translate(val.Title,val.TitleEnglish) }</div>
                                     </>))
                                 }
                             </>):(<></>)
@@ -104,7 +106,7 @@ const FooterPage = () => {
                 }
             </div>
             <div className={`w-full h-full   flex flex-col gap-y-4 `}>
-                <div className='color-2'>Contact Us</div>
+                <div className='color-2'>{tr.contact_us}</div>
                 {
                     !isLoading?(<><div className='flex gap-y-3 flex-col '>
                     <div className='flex gap-x-3 color-3 '>
@@ -113,8 +115,8 @@ const FooterPage = () => {
                         </div>
                         {
                            info?.WorkingInfo!="" && info?.WorkingInfo!=null  ?<><div>
-                            <div className='text-[13px] color-2'>Working hours:</div>
-                            <div className='text-[18px] color-4'>{info?.WorkingInfo}</div>
+                            <div className='text-[13px] color-2'>{tr.working_hour}:</div>
+                            <div className='text-[16px] color-3'>{info?.WorkingInfo}</div>
                         </div></>:""
                         }
                     </div>
@@ -124,8 +126,8 @@ const FooterPage = () => {
                         </div>
                          {
                            info?.Phone1!="" && info?.Phone1!=null  ?<><div>
-                             <div className='text-[13px] color-2'>Phone:</div>
-                            <div className='text-[18px] color-4'>{info?.Phone} / {info?.Phone1}</div>
+                             <div className='text-[13px] color-2'>{tr.phone}:</div>
+                            <div className='text-[16px] color-3'>{info?.Phone} / {info?.Phone1}</div>
                         </div></>:""
                         }
                     </div>
@@ -134,8 +136,8 @@ const FooterPage = () => {
                            <FontAwesomeIcon icon={faEnvelope} />
                         </div>
                         <div >
-                            <div className='text-[13px] color-2'>Email:</div>
-                            <div className='text-[18px] color-4'>{info?.Email}</div>
+                            <div className='text-[13px] color-2'>{tr.email}:</div>
+                            <div className='text-[16px] color-3'>{info?.Email}</div>
                         </div>
                     </div>
                 </div></>):(<><div className='flex constrast gap-y-3 flex-col '>

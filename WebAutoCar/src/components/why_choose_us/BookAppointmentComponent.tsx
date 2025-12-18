@@ -1,7 +1,11 @@
 import { Button, Description, FieldError, Input, Label, ListBox,Select, TextArea, TextField } from "@heroui/react"
 import { getYearsToCurrent, ShowSnackBar } from "../../utils/system_data"
 import { useEffect, useState } from "react"
+import noted from '../../assets/system/note.svg'
+import type { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
 const BookAppointmentComponent = () => {
+  const tr = useSelector((state:RootState)=>state.system.language);
   const [Years,setYears] = useState<number[]>([]);
   const OnSubmit=()=>{
     ShowSnackBar("Submit information completely 🎉")
@@ -11,25 +15,32 @@ const BookAppointmentComponent = () => {
   },[])
   return (
    <div className='w-full p-5 pt-0 flex flex-col gap-y-3'>
-    <h1 className="color-4 text-[40px] font-bold">Booking Your Appointment Today!</h1>
+    <div className="flex gap-x-2 items-center">
+      <div className="w-[40px] h-[40px] ">
+          <img src={noted} className="w-ful h-full" alt="" />
+      </div>
+      <h1 className="color-4 text-[40px] font-bold">
+        {tr.booking_your_appointment}
+      </h1>
+    </div>
     <div  className="color-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam at iusto suscipit dolores reiciendis rem vitae molestiae et doloribus excepturi numquam quod doloremque dolorum deserunt minus vel, voluptates eos? Possimus?</div>
     <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
       <TextField isRequired className="w-full" isInvalid={false} name="fullname" type="text">
-          <Label>Full Name</Label>
+          <Label>{tr.full_name}</Label>
           <Input placeholder="Ly leang seng" className="h-[50px]" />
           <FieldError>Full name is required!</FieldError>
       </TextField>
       <TextField className="w-full" name="email" type="email" >
-          <Label>Email</Label>
+          <Label>{tr.email}</Label>
           <Input placeholder="lyleangseng@gmail.com" className="h-[50px]" />
       </TextField>
       <TextField isRequired className="w-full " isInvalid={false} name="phone" type="text">
-          <Label>Phone</Label>
+          <Label>{tr.phone}</Label>
           <Input placeholder="015 844 712" className="h-[50px]" />
           <FieldError>Phone number is required!</FieldError>
       </TextField>
       <TextField className="w-full " name="phone" type="text">
-          <Label>Phone 2</Label>
+          <Label>{tr.phone}</Label>
           <Input placeholder="015 844 712" className="h-[50px]" />
       </TextField>
     
@@ -37,8 +48,8 @@ const BookAppointmentComponent = () => {
     <div className="color-4 text-[25px] font-bold border-b-2 border-[#ffffff80] mt-4 border-dashed"></div>
 
     <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
-      <Select  selectionMode="multiple"  isRequired className="w-full" placeholder="Select multi">
-      <Label>Car</Label>
+      <Select  selectionMode="multiple"  isRequired className="w-full" placeholder={tr.please_select}>
+      <Label>{tr.car}</Label>
       <Select.Trigger className="h-[50px]">
         <Select.Value />
         <Select.Indicator />
@@ -72,8 +83,8 @@ const BookAppointmentComponent = () => {
         </ListBox>
       </Select.Popover>
     </Select>
-    <Select  selectionMode="multiple" isRequired className="w-full" placeholder="Select multi">
-      <Label>Service</Label>
+    <Select  selectionMode="multiple" isRequired className="w-full" placeholder={tr.please_select}>
+      <Label>{tr.service}</Label>
       <Select.Trigger className="h-[50px]">
         <Select.Value />
         <Select.Indicator />
@@ -88,8 +99,8 @@ const BookAppointmentComponent = () => {
       </Select.Popover>
     </Select>
     
-    <Select className="w-full" placeholder="Select one">
-      <Label>Year</Label>
+    <Select className="w-full" placeholder={tr.please_select}>
+      <Label>{tr.year}</Label>
       <Select.Trigger className="h-[50px]">
         <Select.Value />
         <Select.Indicator />
@@ -113,7 +124,7 @@ const BookAppointmentComponent = () => {
     
     </div>
     <div className="w-full">
-       <Label >Problem</Label>
+       <Label >{tr.problem}</Label>
         <TextArea  required={true}
         aria-label="Quick project update"
         className="w-full h-[100px]"
@@ -121,7 +132,7 @@ const BookAppointmentComponent = () => {
       />
      
     </div>
-    <div><Button className="w-full h-[50px] rounded-xl text-[17px]" onClick={OnSubmit}>Submit Our Problem</Button></div>
+    <div><Button className="w-full h-[50px] rounded-xl text-[17px]" onClick={OnSubmit}>{tr.submit}</Button></div>
   </div>
   )
 }

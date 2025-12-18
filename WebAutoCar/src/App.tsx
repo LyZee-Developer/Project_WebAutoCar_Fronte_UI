@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import HeaderSectionComponent from './components/HeaderSectionComponent'
 import './styles/tailwind.css'
 import './styles/system_style.scss';
@@ -16,6 +16,7 @@ import SlideMenuComponent from './components/SlideMenuComponent';
 import WhyChooseUsPage from './pages/WhyChooseUsPage';
 import FooterPage from './pages/FooterPage';
 import PortfolioPage from './pages/PortfolioPage';
+import { setCountry, setLanguage } from './store/system/SystemStore';
 function App() {
   const isDark = useSelector((state:RootState)=>state.system.isDark);
   const headerType = useSelector((state:RootState)=>state.system.headerType);
@@ -25,11 +26,20 @@ function App() {
   const refwhychoose = useRef<HTMLDivElement | null>(null);
   const portfolio = useRef<HTMLDivElement | null>(null);
   const refaboutus = useRef<HTMLDivElement | null>(null);
+  const country = useSelector((state:RootState)=>state.system.country);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(setLanguage(country.Code))
+  },[country])
   useEffect(()=>{
     if(isDark) document.body.classList.add(`dark`);
     else document.body.classList.remove(`dark`);
   },[isDark])
-
+  useEffect(()=>{
+    var lang = localStorage.getItem("lang");
+    if(lang==null || lang =="") return ;
+    dispatch(setCountry(JSON.parse(lang)))
+  },[])
   useEffect(()=>{
     console.log("yes2")
    if(headerType=="home"){

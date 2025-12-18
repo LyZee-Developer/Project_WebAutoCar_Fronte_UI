@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { SystemState } from "../../interfaces/system";
+import { country, getLanguage } from "../../utils/system_data";
 const initialState : SystemState ={
     isDark : true,
     isShowNavLeftMenu:false,
     headerType:"",
     ownInfo: {},
     services:[],
+    country:country[0],
+    language:{"":""}
 }
 const ThemeStore = createSlice({
     name:"theme",
@@ -25,8 +28,15 @@ const ThemeStore = createSlice({
         },
         setDataService :(state,actions)=>{
             state.services=actions.payload;
+        },
+        setCountry :(state,actions)=>{
+            state.country=actions.payload;
+            state.language = getLanguage(actions.payload.Code);
+        },
+        setLanguage :(state,actions)=>{
+            state.language = getLanguage(actions.payload);
         }
     }
 })
-export const {changeTheme,setIsShowNavLeftMenu,SelectHeaderAction,setOwnInfo,setDataService} = ThemeStore.actions
+export const {changeTheme,setIsShowNavLeftMenu,SelectHeaderAction,setOwnInfo,setDataService,setCountry,setLanguage} = ThemeStore.actions
 export default ThemeStore.reducer;

@@ -11,6 +11,8 @@
     --bg-card:#6363630c;
     --bg-cnstra-card:#414141;
     --loading:#d5d5d561;
+    --bd-color : #c9c9c9;
+    --bd-constra-color : #414141;
 }
 .dark{
     --bg:rgb(0, 0, 0);
@@ -25,6 +27,8 @@
     --bg-card:#121212;
     --bg-cnstra-card:#535353;
     --loading:#d9d6d61a;
+    --bd-color : #414141;
+    --bd-constra-color : #c9c9c9;
 }
 body{
     background-color: var(--bg) !important;
@@ -47,6 +51,9 @@ body{
 .bg-loading{
     background: var(--loading) !important;
 }
+.bd-card{
+    border: 1px solid var(--bd-color) !important;
+}
 .constrast {
     .color-1{
         color: var(--color-cnstra-1) !important;
@@ -65,5 +72,8 @@ body{
     }
     .bg-loading{
         background: var(--loading) !important;
+    }
+    .bd-card{
+        border: 1px solid var(--bd-constra-color) !important;
     }
 }

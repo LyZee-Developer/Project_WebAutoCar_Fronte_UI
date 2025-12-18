@@ -48,6 +48,7 @@ const PortfolioPage = () => {
     }, []); // Empty dependency array ensures it runs once on mount
     const swiperRef = useRef<SwiperType | null>(null);
     const info:any = useSelector((state:RootState)=>state.system.ownInfo)
+    const tr = useSelector((state:RootState)=>state.system.language);
     var Duration=2000;
     const onClickBack=(behavior:string)=>{
         if(behavior=="front") swiperRef.current?.slideNext()
@@ -83,9 +84,9 @@ const PortfolioPage = () => {
   return (
     <div className="w-full py-10">
         <div className="max-w-[1200px] mx-auto py-5">
-            <p className="color-2 pl-5">Portfolio {windowSize.width}</p>
+            <p className="color-2 pl-5">{tr.portfolio}</p>
             <div className="w-full flex justify-between items-center px-5">
-                <div className="text-[40px] max-[600px]:text-[25px] font-medium color-4 ">We're Proud of our recent Success Work</div>
+                <div className="text-[40px] max-[600px]:text-[25px] font-medium color-4 ">{tr.we_are_proud_of_our_recent_success_work}</div>
                 <div className="flex gap-x-6">
                     <div onClick={()=>onClickBack("back")} className="bg-card cursor-pointer p-3 rounded-full w-[55px] flex justify-center items-center h-[55px] color-3 "><FontAwesomeIcon icon={faArrowLeft} /></div>
                     <div onClick={()=>onClickBack("front")} className="bg-card cursor-pointer p-3 rounded-full w-[55px] flex justify-center items-center h-[55px] color-3 "><FontAwesomeIcon icon={faArrowRight} /></div>
@@ -170,11 +171,11 @@ const PortfolioPage = () => {
             }
               
         </div>
-        <div className="w-full flex py-5 flex-col gap-y-3 justify-center items-center">
+        {/* <div className="w-full flex py-5 flex-col gap-y-3 justify-center items-center">
             <div className="text-[20px] color-3 px-5">
                 Check our social media to see what we've been working on
             </div>
-        </div>
+        </div> */}
     </div>
   )
 }

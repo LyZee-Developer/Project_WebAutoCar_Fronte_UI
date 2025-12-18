@@ -1,15 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import imgfix from '../assets/service/prop.jpg'
+import noimage from '../assets/system/no_image.jpg'
 import type { RootState } from '../store/store'
-import logor from '../assets/logo/logor.png'
 import { useEffect, useState } from 'react'
-import { ShowSnackBar } from '../utils/system_data'
 import { https } from '../utils/https'
-import type { IServiceData, IServiceDetail } from '../interfaces/service/service'
 import type { PartnerSupport } from '../interfaces/partner/partner'
 import { ui } from '../utils/GlobalHelper'
 const AboutUSComponent = () => {
     var isDark = useSelector((state:RootState)=>state.system.isDark);
+    const tr = useSelector((state:RootState)=>state.system.language);
     const [listPartner,setListPartner] = useState<PartnerSupport[]>([]);
     const [isLoading,setIsLoading]=useState<boolean>(false);
     const getData = async () => {
@@ -29,7 +28,7 @@ const AboutUSComponent = () => {
         });
         if(data.length > 0 ){
             setIsLoading(false);
-            console.log(data)
+            console.log("about tus",data)
             setListPartner(data)
         }
     };
@@ -57,6 +56,10 @@ const AboutUSComponent = () => {
     //         if(error!=undefined) ShowSnackBar(error)
     //     }
     // };
+    const onErrorImage=(error:any)=>{
+        console.log(error)
+        error.currentTarget.src = noimage;
+    }
   useEffect(() => {
     getData();
   }, []); // Empty dependency array ensures it runs once on mount
@@ -72,7 +75,7 @@ const AboutUSComponent = () => {
             </div>
             <div className='pl-10 max-[900px]:pl-0'>
                 <div>
-                    <div className='color-3'>About us</div>
+                    <div className='color-3'>{tr.about_us}</div>
                     <div className='text-[30px] color-4 font-bold'>Why choose SV Performnce</div>
                     <div className='color-2'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ea excepturi nisi repellat inventore magnam odit tempora! Molestiae maxime dolor recusandae eum, sunt voluptas odit vel aspernatur, quis similique nemo!</div>
                 </div>
@@ -87,16 +90,15 @@ const AboutUSComponent = () => {
         <div className='w-full px-10 '>
             <div className='w-full h-[2px] mt-10 relative'>
                 <div className='w-full h-full bg-[#ffffff36]'></div>
-                <div className='text-white w-[250px] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-black px-4'>Our Partner & Support</div>
+                <div className='text-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-black px-4'>{tr.our_partner_support}</div>
             </div>
             <div className='flex mt-10 gap-x-8 mb-8'>
                 <div className="carousel w-full!">
                     <div className="carousel-track">
                         {
                             !isLoading?(<>{
-                                listPartner.map(val=>(<div className={`flex items-center ${val.Id}`}>
-                                                                    <img src={val.PathImage} alt="" />
-
+                                [...listPartner].map(val=>(<div className={`flex items-center gap-x-3 ${val.Id}`}>
+                                <img src={val.PathImage==""?noimage:`http://localhost:8989/${val.PathImage}`} alt="" className="w-[40px] h-[40px] rounded-full" />
                                 <div className='text-white'>{val.Name}</div>
                             </div>))
                             }</>):(<>

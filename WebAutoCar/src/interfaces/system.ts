@@ -1,3 +1,4 @@
+import type { Country } from "./country/country";
 import type { IOwnerInfo } from "./info/info";
 import type { IServiceDetail } from "./service/service";
 
@@ -13,5 +14,7 @@ export interface SystemState {
   headerType: string;
   ownInfo: IOwnerInfo;
   services: IServiceDetail[];
+  country:Country,
+  language:Record<string, string>
 }
 
