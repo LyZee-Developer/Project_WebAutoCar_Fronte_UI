@@ -1,15 +1,22 @@
 import { useSelector } from 'react-redux'
 import imgfix from '../assets/service/prop.jpg'
+import hand from '../assets/service/hand-gear.svg'
+import setting_point from '../assets/service/setting-point.svg'
 import noimage from '../assets/system/no_image.jpg'
 import type { RootState } from '../store/store'
 import { useEffect, useState } from 'react'
 import { https } from '../utils/https'
 import type { PartnerSupport } from '../interfaces/partner/partner'
-import { ui } from '../utils/GlobalHelper'
+import { translate, ui } from '../utils/GlobalHelper'
+import { ShowSnackBar } from '../utils/system_data'
+import type { AboutUs, AboutUsDetail } from '../interfaces/aboutus/about_us'
 const AboutUSComponent = () => {
     var isDark = useSelector((state:RootState)=>state.system.isDark);
     const tr = useSelector((state:RootState)=>state.system.language);
+    const info = useSelector((state:RootState)=>state.system.ownInfo);
     const [listPartner,setListPartner] = useState<PartnerSupport[]>([]);
+    const [aboutUs,setAboutUs] = useState<AboutUs>();
+    const [aboutUsDetail,setAboutUsDetail] = useState<AboutUsDetail[]>([]);
     const [isLoading,setIsLoading]=useState<boolean>(false);
     const getData = async () => {
         setIsLoading(true);
@@ -28,57 +35,93 @@ const AboutUSComponent = () => {
         });
         if(data.length > 0 ){
             setIsLoading(false);
-            console.log("about tus",data)
             setListPartner(data)
         }
     };
-    // const getlistPartner = async () => {
-    //     const {data,error} = await https({
-    //         url:"http://localhost:8989/api/block_content_detail/list",
-    //         data:{
-    //             Id:0,
-    //             Search:"",
-    //             OrderBy:"Id",
-    //             OrderDir:"desc",
-    //             IsComplete:true,
-    //             Page:1,
-    //             Record:10,
-    //             ContentBlockId:list?.Id
-    //         },
-    //         method:"post"
-    //     });
-    //     if(data.length > 0 ){
-    //         setIsLoading(false);
-    //         setListPartner(data)
-    //         dispatch(setDataService(data));
-    //         console.log(data)
-    //     }else {
-    //         if(error!=undefined) ShowSnackBar(error)
-    //     }
-    // };
   useEffect(() => {
     getData();
-  }, []); // Empty dependency array ensures it runs once on mount
-
+    getDataAboutUs();
+  }, []); 
   useEffect(() => {
-    // getlistPartner();
-  }, [listPartner]); // Empty dependency array ensures it runs once on mount
+    getDataAboutUsDet();
+  }, [aboutUs]); 
+
+
+    const getDataAboutUs = async () => {
+        setIsLoading(true);
+        const {data} = await https({
+            url:"http://localhost:8989/api/block_content/list",
+            data:{
+                Id:0,
+                Search:"",
+                OrderBy:"Id",
+                OrderDir:"desc",
+                IsComplete:false,
+                Page:1,
+                Record:10
+            },
+            method:"post"
+        });
+        if(data.length > 0 ){
+            setIsLoading(false);
+            console.log("about lst : ",data)
+            var checkList = data?.filter((v:any)=>v.Type=="AboutUs");
+           setAboutUs(checkList[0])
+        } 
+    };
+    const getDataAboutUsDet = async () => {
+        const {data,error} = await https({
+            url:"http://localhost:8989/api/block_content_detail/list",
+            data:{
+                Id:0,
+                Search:"",
+                OrderBy:"Id",
+                OrderDir:"desc",
+                IsComplete:true,
+                Page:1,
+                Record:10,
+                ContentBlockId:aboutUs?.Id
+            },
+            method:"post"
+        });
+        if(data.length > 0 ){
+            console.log("detail ",data)
+            setIsLoading(false);
+            setAboutUsDetail(data)
+        }else {
+            if(error!=undefined) ShowSnackBar(error)
+        }
+    };
+
+
+ 
+ 
   return (
     <div className={`mt-5 pt-20 w-full  ${!isDark?"bg-black constrast":""}   rounded-3xl  p-10   max-w-[1500px] mx-auto `}>
         <div className="max-[900px]:flex flex-col max-[600px]:p-0 p-10 grid flex-wrap items-start grid-cols-[1fr_1fr]">
             <div className='w-full h-full'>
                 <img className='w-full h-full object-cover rounded-2xl' src={imgfix} alt="" />
             </div>
-            <div className='pl-10 max-[900px]:pl-0'>
-                <div>
+            <div className='pl-10 max-[900px]:pl-0 '>
+                <div className='flex flex-col gap-y-2'>
                     <div className='color-3'>{tr.about_us}</div>
-                    <div className='text-[30px] color-4 font-bold'>Why choose SV Performnce</div>
-                    <div className='color-2'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ea excepturi nisi repellat inventore magnam odit tempora! Molestiae maxime dolor recusandae eum, sunt voluptas odit vel aspernatur, quis similique nemo!</div>
+                    <div className='text-[30px] color-4 font-medium flex gap-x-3 '>
+                        <div className='w-[40px] h-[40px]'>
+                            <img src={hand} className='w-full h-full ' alt="" />
+                        </div >
+                        <div className='max-[400px]:text-[20px]'>
+                            {tr.why_choose} {translate(info.Name || "",info.EnglishName || "")}
+                        </div>
+                    </div>
+                    <div className='color-2'>{translate(aboutUs?.Title || "",aboutUs?.TitleEnglish || "")}</div>
                 </div>
                 <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3'>
-                    {[1,2,3,4].map(val=>(<div className={`flex flex-col gap-y-4 w-full pt-5 rounded-2xl  ${val}`}>
-                        <div className='font-bold text-[20px] color-4'>Service</div>
-                        <div className='color-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum vero recusandae doloremque eveniet natus, ipsam adipisci in est id illum illo laudantium aut nulla, reprehenderit possimus aperiam nam voluptatem dicta?</div>
+                    {aboutUsDetail.map(val=>(<div className={`flex flex-col gap-y-4 w-full pt-5 rounded-2xl  ${val}`}>
+                        <div className='flex gap-x-2'>
+                            <div className='w-[18px] h-[18px]'><img src={setting_point} className='w-full h-full' alt="" /></div>
+                            <div className='font-medium text-[20px] max-[400px]:text-[16px] color-4'>{translate(val.Title,val.TitleEnglish)}</div>
+                        </div>
+                        <div className='color-3'>{translate(val.Description,val.DescriptionEnglish)}</div>
                     </div>))}
                 </div>
             </div>

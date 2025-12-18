@@ -6,28 +6,35 @@ import lam from '../assets/image/lamb.png'
 import fer from '../assets/image/ferrari-logo-png_seeklogo-512505.png'
 import mas from '../assets/image/mazda-logo-png_seeklogo-89733.png'
 import { Button } from '@heroui/react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
-import {ui} from '../utils/GlobalHelper'
+import {translate, ui} from '../utils/GlobalHelper'
+import { SelectHeaderAction } from '../store/system/SystemStore'
 const HeroSectionComponent=()=> {
     var isDark = useSelector((state:RootState)=>state.system.isDark);
+    var info = useSelector((state:RootState)=>state.system.ownInfo);
+    var tr = useSelector((state:RootState)=>state.system.language);
+    var scroll = useSelector((state:RootState)=>state.system.headerType);
+    const dispatch = useDispatch()
+    const onSelectHeader=(select:string)=>{
+        if(scroll=="footer") select = "footer-btn";
+        dispatch(SelectHeaderAction(select))
+      }
     var shape_style = "w-[100px] h-[100px] bg-card rounded-xl flex justify-center items-center";
     var transition = "transition-all duration-100 ease-in"
   return (
-    <div className={`w-full h-[500px] mt-10 ${isDark?"bg-black":"bg-white"} hero relative`}>
+    <div className={`w-full h-[500px]  mt-10 ${isDark?"bg-black":"bg-white"} hero relative`}>
         <img src={`${isDark?background:backgroundWhite}`} alt="" className={`w-full object-contain  h-full ${ui.tr100}`}/>
         <div className={`absolute max-[960px]:left-[40px] max-[960px]:top-[10%] top-[20%] left-[80px] ${transition} gap-y-4 flex  flex-col`}> 
             <div className='max-w-[500px] flex flex-col gap-y-5 '>
-                <div className='text-[#ffffff96] max-[590px]:color-4! color-3'>ផ្តល់ជូននូវ​ គុណភាព នឹងទុកចិត្តទ្វេដង</div>
-                <div className='text-5xl font-medium text-white  max-[590px]:text-[25px] color-4 typing-animation'>Heng Auto Service</div>
-                <div className='leading-[25px] max-[590px]:color-4! color-2 max-[510px]:hidden'>New products and model lines were introduced to the brand's portfolio and brought to the market and saw an increased productivity for the brand. In the late 2000s, during the Great Recession, Lamborghini's sales dropped nearly 50%.</div>
+                <div className='text-[#ffffff96] max-[590px]:color-4! color-3'>{translate(info.SubDescription||"",info.SubDescriptionEnglish||"")}</div>
+                <div className='text-5xl font-medium text-white  max-[590px]:text-[25px] color-4 typing-animation'>{translate(info.Name || "",info.EnglishName || "")}</div>
+                <div className='leading-[25px] max-[590px]:color-4! color-3 max-[510px]:hidden'>{translate(info.Description||"",info.DescriptionEnglish ||"")}</div>
             </div>
             <div className='flex gap-x-3 max-[420px]:pt-5 max-[510px]:hidden'>  
-                 <Button size="lg" className={"rounded-lg  bg-white text-black"}>
-                    Contact Now
+                 <Button size="lg" className={"rounded-lg  "} onPress={()=>{onSelectHeader("footer")}}>
+                    {tr.contact_now}
                 </Button> 
-
-                <Button size='lg' className={"rounded-lg border-white border-1! bg-[#000000]"}>Lean More</Button>  
             </div>
         </div>
         <div className='absolute bottom-10 max-[390px]:right-[65px] max-[325px]:right-[35px] overflow-hidden right-10 flex gap-x-4'>

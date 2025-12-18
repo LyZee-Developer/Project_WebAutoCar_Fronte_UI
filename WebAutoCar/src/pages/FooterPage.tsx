@@ -59,12 +59,12 @@ const FooterPage = () => {
     if(link!="" && link!=undefined) window.open(link,"_blank")
   }
   return (
-    <div className={`w-full bg-black p-5 ${!isDark?"constrast":""}`}>
+    <div className={`w-full  p-5 ${!isDark?" bg-white":"bg-black"}`}>
         <div className="grid w-full h-full max-[540px]:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] max-[1300px]:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-4">
             <div className={`w-full h-full flex flex-col gap-y-10   `}>
                 <div className='w-[160px]'><img src={imgfix} alt="" /></div>
                 <div className='color-3'>
-                    {info?.Description}
+                    {translate(info?.Description || "",info?.DescriptionEnglish|| "")}
                 </div>
                 <div className='flex gap-x-4'>
                     {

@@ -19,4 +19,7 @@ export interface IOwnerInfo{
     UpdatedDate?: Date,
     WorkingInfo?: string,
     YoutubeURL?: string,
+    DescriptionEnglish?: string,
+    SubDescription?: string,
+    SubDescriptionEnglish?: string,
 }

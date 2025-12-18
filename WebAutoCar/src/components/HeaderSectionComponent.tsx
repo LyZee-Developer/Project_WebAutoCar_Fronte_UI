@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logor from '../assets/logo/logor.png'
-import { faBarsStaggered, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faBarsStaggered, faCloudSun, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../store/store'
 import { changeTheme, SelectHeaderAction, setCountry, setIsShowNavLeftMenu } from '../store/system/SystemStore'
@@ -24,20 +24,7 @@ const HeaderSectionComponent=()=> {
   const onClickNavLeftMenu=()=>{
     dispatch(setIsShowNavLeftMenu(!isShowNavLeftMenu))
   }
-  const handleScroll=(e:any)=>{
-    console.log(e)
-    console.log("window.scrollY",window.scrollY)
-  }
-  useEffect(() => {
-    // Add the event listener to the window
-    window.addEventListener('scroll', handleScroll);
-    setIsFixHeader(true);
-    // Clean up the event listener on component unmount to prevent memory leaks
-    console.log("==>",getLanguage("cam").home)
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+ 
   const isShowModalLanguage=(isShow:boolean)=>{
       setIsShowModalLG(!isShow);
   }
@@ -54,7 +41,7 @@ const HeaderSectionComponent=()=> {
   return (
     <>
         <div className={`flex bg-black justify-between items-center px-2 ${isFixHeader?"fixed z-200 w-full left-0 top-0":""}`}> 
-            <div className='w-[130px]'>
+            <div className='w-[130px] max-[400px]:w-[100px]'>
                 <img src={logor} className='w-full h-full ' alt="" />
             </div>
             <div className='flex items-center gap-x-6 text-white'>{
@@ -63,7 +50,7 @@ const HeaderSectionComponent=()=> {
                 </div>)
               }
                 
-                <div className='sm:hidden' onClick={()=>onClickNavLeftMenu()}><FontAwesomeIcon icon={faBarsStaggered}  /></div>
+                <div className='sm:hidden cursor-pointer' onClick={()=>onClickNavLeftMenu()}><FontAwesomeIcon icon={faBarsStaggered}  /></div>
                 <div className={`${style} border border-white rounded-[7px] px-3 py-1 `} onClick={()=>{onSelectHeader("contact_us")}}>{tr.contact_us}</div>
                 <div className='flex gap-x-2'>
                     <div className='w-[30px] cursor-pointer h-[30px] bd-card rounded-full text-white flex justify-center items-center' onClick={()=>onClickChangeThem()}>
@@ -72,8 +59,6 @@ const HeaderSectionComponent=()=> {
                         }
                   </div>
                   <div className='w-[30px] cursor-pointer h-[30px]  relative rounded-full  text-white flex justify-center items-center'>
-                        {/* <FontAwesomeIcon icon={faGlobe}   className='text-[15px]' onClick={()=>{isShowModalLanguage(isShowModalLG)}}/>
-                          <div className=''></div> */}
                           <div className='w-[30px] p-1 h-[30px]  rounded-full flex justify-center items-center bd-card ' onClick={()=>{isShowModalLanguage(isShowModalLG)}}>
                                         <img src={language.Image} className='w-full h-full object-cover rounded-full' alt="" />
                                     </div>

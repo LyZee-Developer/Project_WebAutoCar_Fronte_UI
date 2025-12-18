@@ -1,7 +1,7 @@
 // import { Button } from '@heroui/react'
 import { useEffect, useState } from 'react'
 import { https } from '../utils/https'
-import { ui } from '../utils/GlobalHelper'
+import { translate, ui } from '../utils/GlobalHelper'
 import { ShowSnackBar } from '../utils/system_data'
 import service1 from '../assets/service/car-check.svg'
 import website from '../assets/service/car-website.svg'
@@ -79,8 +79,8 @@ const ServiceComponent = () => {
         <div className="w-full flex justify-center flex-col items-center gap-y-2  pb-10 px-[20px] pt-20">
             {
                 !isLoading?(<><h3 className="font-medium color-3">{tr.our_service}</h3>
-            <h1 className="text-[30px] font-bold color-4">{list?.Title}</h1>
-            <div className="max-w-[800px] text-center color-2"><p>{list?.Description}</p></div></>):(
+            <h1 className="text-[30px] font-bold color-4 max-[400px]:text-[20px] ">{translate(list?.Title||"",list?.TitleEnglish||"")}</h1>
+            <div className="max-w-[800px] text-center color-2"><p>{translate(list?.Description||"",list?.DescriptionEnglish||"")}</p></div></>):(
             <div className='flex flex-col w-full justify-center items-center gap-y-3'>
                 <div className={`w-[100px] h-[10px] ${ui.animation}`}></div>
                 <div className={`max-w-[800px] w-full h-[30px] ${ui.animation}`}></div>
@@ -93,12 +93,12 @@ const ServiceComponent = () => {
             {
                 listService.length>0?(<>
                 {
-                    [...listService,...listService].map((val,index)=>(
+                    [...listService].map((val,index)=>(
                     <div className={`bg-card  flex flex-col gap-y-4 w-full p-5 rounded-2xl ${val}`}>
                         <div className='w-[45px] h-[45px]'> <img className='w-full h-full' src={ imageService[index>6?6:index]} alt="" /></div>
                         <div>
-                            <div className='font-bold text-[20px] color-4'>{val.Title}</div>
-                            <div className='color-3'>{val?.Description}</div>
+                            <div className='font-bold text-[20px] color-4  max-[400px]:text-[18px]'>{translate(val.Title,val.TitleEnglish)}</div>
+                            <div className='color-3'>{translate(val?.Description,val?.DescriptionEnglish)}</div>
                         </div>
                     </div>))
                 }

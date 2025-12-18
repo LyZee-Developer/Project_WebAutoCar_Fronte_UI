@@ -19,11 +19,11 @@ const BookAppointmentComponent = () => {
       <div className="w-[40px] h-[40px] ">
           <img src={noted} className="w-ful h-full" alt="" />
       </div>
-      <h1 className="color-4 text-[40px] font-bold">
+      <h1 className="color-4 text-[30px] max-[400px]:text-[22px] font-medium">
         {tr.booking_your_appointment}
       </h1>
     </div>
-    <div  className="color-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam at iusto suscipit dolores reiciendis rem vitae molestiae et doloribus excepturi numquam quod doloremque dolorum deserunt minus vel, voluptates eos? Possimus?</div>
+    <div  className="color-3">{tr.please_describe_the_problem_with_your_car_once_we_receive_your_information_we_will_contact_you_shortly}</div>
     <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
       <TextField isRequired className="w-full" isInvalid={false} name="fullname" type="text">
           <Label>{tr.full_name}</Label>

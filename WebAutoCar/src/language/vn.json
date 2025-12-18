@@ -18,5 +18,9 @@
     "problem":"Problem",
      "please_select":"Please select...",
     "booking_your_appointment":"Booking Your Appointment",
-    "why_choose_us":"Why Choose Us"
+    "why_choose_us":"Why Choose Us",
+     "contact_now":"Contact Now",
+       "why_choose":"Why Choose",
+        "booking_appointment":"Booking Appointment",
+        "please_describe_the_problem_with_your_car_once_we_receive_your_information_we_will_contact_you_shortly":"Please describe the problem with your car. Once we receive your information, we will contact you shortly."
 }

@@ -10,7 +10,7 @@ import { data_header } from "../utils/system_data";
 const SlideMenuComponent = () => {
 
     const isShowNavLeftMenu = useSelector((state:RootState)=>state.system.isShowNavLeftMenu);
-    
+    const tr = useSelector((state:RootState)=>state.system.language);
     const dispatch = useDispatch();
     const CloseNavLeft=()=>{
         dispatch(setIsShowNavLeftMenu(!isShowNavLeftMenu))
@@ -35,7 +35,7 @@ const SlideMenuComponent = () => {
                 {
                     data_header.map(val=>
                         <div key={val.code} className={`w-full cursor-pointer rounded-md pl-5 py-3 hover:bg-[#cacaca27] ${ui.tr200}`} onClick={()=>OnSelectNavLeft(val.code)}>
-                            {val.title}
+                            {tr[val.code]}
                         </div>
                     )
                 }

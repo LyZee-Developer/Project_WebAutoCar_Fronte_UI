@@ -43,17 +43,17 @@ const country:Country[] = [
         EnglishName:"Cambodia",
         Image:ca
     },
+     {
+        Code:"us",
+        Name:"អង់គ្លេស",
+        EnglishName:"U.S.A",
+        Image:us
+    },
     {
         Code:"vn",
         Name:"វៀតណាម",
         EnglishName:"Vietnam",
         Image:vn
-    },
-    {
-        Code:"us",
-        Name:"អង់គ្លេស",
-        EnglishName:"U.S.A",
-        Image:us
     },
     {
         Code:"br",
@@ -99,9 +99,9 @@ const header:HeaderData[] = [
             titleEnglish:"Our Service"
         },
         {
-            code:"our_work",
-            title:"Our Work",
-            titleEnglish:"Our Work"
+            code:"booking_appointment",
+            title:"កក់ការណាត់ជួប",
+            titleEnglish:"Booking Appointment"
         },
         {
             code:"about_us",
