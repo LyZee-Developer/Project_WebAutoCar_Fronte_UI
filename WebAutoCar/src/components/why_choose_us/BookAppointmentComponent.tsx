@@ -8,6 +8,8 @@ import {  useSelector } from "react-redux";
 import type {  Car, Service } from "../../interfaces/booking_appointment/data";
 import { https } from "../../utils/https";
 import { isEmptyData, translate } from "../../utils/GlobalHelper";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const BookAppointmentComponent = () => {
   const tr = useSelector((state:RootState)=>state.system.language);
   const isDark = useSelector((state:RootState)=>state.system.isDark);
@@ -17,6 +19,7 @@ const BookAppointmentComponent = () => {
   const [service,setService] = useState<Service[]>([]);
   const [isLoading,setIsLoading]=useState<boolean>(false);
   const [isPending,setPending]=useState<boolean>(false);
+  const [hasSubmitInfo,setHasSubmitInfo]=useState<boolean>(false);
   const [fullName,setFullName] = useState<string>("");
   const [email,setEmail] = useState<string>("");
   const [phone,setPhone] = useState<string>("");
@@ -59,6 +62,7 @@ const BookAppointmentComponent = () => {
     getData("car");
   }, []);
    const OnSubmit=()=>{
+    setHasSubmitInfo(false);
     setPending(true)
     console.log({
       fullName:fullName,
@@ -88,6 +92,7 @@ const BookAppointmentComponent = () => {
       setPending(false)
       return ;
     }
+    setFirstLogin(ev=>({...ev,phone:false,name:false,phone1:false,problem:false}))
     setTimeout(() => {
       setProblem("")
       setFullName("")
@@ -98,9 +103,29 @@ const BookAppointmentComponent = () => {
       setCarId(0)
       setYearsId(0)
       setServiceIds([])
-      ShowSnackBar("Submit information completely 🎉")
-      setPending(false)
+      submitData()
     }, 1000);
+  }
+  const submitData=async()=>{
+ 
+    const {data} = await https({
+            url:"http://localhost:8989/api/booking_appointment/create",
+            data:{
+                fullName:fullName,
+                email:email,
+                phone:phone,
+                phone1:phone1,
+                problem:problem,
+                serviceId:serviceIds?.join(","),
+                carId:carId,
+                year:YearsId
+            },
+            method:"post"
+        });
+      if(!isEmptyData(data)){
+        setHasSubmitInfo(true);
+        setPending(false)
+      }
   }
   const hoverSelect=` ${isDark?"hover:bg-[#303030] hover:text-white":"hover:bg-[#f0f0f0] hover:text-black"}`;
   
@@ -285,6 +310,15 @@ const BookAppointmentComponent = () => {
         </>
       </Button>
     </div>
+        
+       {
+        hasSubmitInfo?(<>
+          <div className="w-full h-[60px] rounded-xl bg-[#23fa7523] text-white text-[14px] flex gap-x-2 justify-center items-center">
+            <div className="color-4">Thank you! we will contact you back </div>
+            <FontAwesomeIcon icon={faCircleCheck} className="text-[20px]  text-green-400"/>
+            </div>
+       </>):(<></>)
+       }
   </div>
   )
 }

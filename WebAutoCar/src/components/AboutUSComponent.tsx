@@ -41,11 +41,11 @@ const AboutUSComponent = () => {
     };
   useEffect(() => {
     getData();
-    getDataAboutUs();
+    
   }, []); 
-  useEffect(() => {
-    getDataAboutUsDet();
-  }, [aboutUs]); 
+ useEffect(() => {
+    getDataAboutUs();
+  }, [listPartner]); 
 
     const getDataAboutUs = async () => {
         setIsLoadingAboutUs(true);
@@ -67,20 +67,21 @@ const AboutUSComponent = () => {
             console.log("about lst : ",data)
             var checkList = data?.filter((v:any)=>v.Type=="AboutUs");
            setAboutUs(checkList[0])
+           getDataAboutUsDet();
         } 
     };
     const getDataAboutUsDet = async () => {
         const {data,error} = await https({
             url:"http://localhost:8989/api/block_content_detail/list",
             data:{
-                Id:0,
-                Search:"",
-                OrderBy:"Id",
-                OrderDir:"desc",
-                IsComplete:true,
-                Page:1,
-                Record:10,
-                ContentBlockId:aboutUs?.Id
+                id:0,
+                search:"",
+                orderBy:"Id",
+                orderDir:"desc",
+                isComplete:true,
+                page:1,
+                record:10,
+                contentBlockId:aboutUs?.Id
             },
             method:"post"
         });

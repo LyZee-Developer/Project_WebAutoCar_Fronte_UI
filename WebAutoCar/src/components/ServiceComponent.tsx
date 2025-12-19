@@ -41,20 +41,21 @@ const ServiceComponent = () => {
             setIsLoading(false);
             var checkList = data?.filter((v:any)=>v.Type=="Service");
             if (checkList.length>0) setList(checkList[0])
+          
         } 
     };
     const getListService = async () => {
         const {data,error} = await https({
             url:"http://localhost:8989/api/block_content_detail/list",
             data:{
-                Id:0,
-                Search:"",
-                OrderBy:"Id",
-                OrderDir:"desc",
-                IsComplete:true,
-                Page:1,
-                Record:10,
-                ContentBlockId:list?.Id
+                id:0,
+                search:"",
+                orderBy:"Id",
+                orderDir:"desc",
+                isComplete:true,
+                page:1,
+                record:10,
+                contentBlockId:list?.Id
             },
             method:"post"
         });
@@ -62,7 +63,6 @@ const ServiceComponent = () => {
             setIsLoading(false);
             setListService(data)
             dispatch(setDataService(data));
-            console.log(data)
         }else {
             if(error!=undefined) ShowSnackBar(error)
         }
@@ -70,10 +70,10 @@ const ServiceComponent = () => {
   useEffect(() => {
     getData();
   }, []); // Empty dependency array ensures it runs once on mount
-
-  useEffect(() => {
-    getListService();
-  }, [list]); // Empty dependency array ensures it runs once on mount
+  useEffect(()=>{
+      getListService();
+  },[list])
+ 
   return (
     <div>
         <div className="w-full flex max-[430px]:p-2 max-[1600px]:p-2 max-[1300px]:p-2 max-[780px]:p-2 max-[830px]:p-2 justify-center flex-col items-center gap-y-2  pb-10 px-[20px] pt-20">
