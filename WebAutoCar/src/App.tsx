@@ -88,14 +88,8 @@ function App() {
     });
    }
   },[headerType])
-   const handleScroll=(e:any)=>{
-    console.log(e)
-    console.log("window.scrollY",window.scrollY)
-    if(window.scrollY>1000){
-      console.log("Yesss")
-      setIsShowScrollUp(true);
-    }
-    else setIsShowScrollUp(false);
+   const handleScroll=()=>{
+    setIsShowScrollUp(window.scrollY>1000);
   }
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -113,7 +107,7 @@ function App() {
         <div ref={reffooter}><FooterPage /></div>
         {
           IsShowScrollUp?(<>
-            <div className={`w-[50px] bg-red-400 text-white h-[50px]  cursor-pointer animate-ping flex justify-center items-center max-[520px]:left-[50%] right-[5%] rounded-full fixed bottom-10  z-100`} onClick={()=>ScrollUp()}>
+            <div className={`w-[50px] bg-red-400 text-white h-[50px]  cursor-pointer animate-ping flex justify-center items-center  right-[5%] rounded-full fixed bottom-10  z-100`} onClick={()=>ScrollUp()}>
             <FontAwesomeIcon icon={faCircleUp} />
           </div>
           </>):(<></>) 

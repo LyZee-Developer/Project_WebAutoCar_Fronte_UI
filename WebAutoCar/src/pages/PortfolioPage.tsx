@@ -91,7 +91,7 @@ const PortfolioPage = () => {
                 </div>
             </div>
         </div>
-        <div className="w-full px-10 select-none cursor-pointer">
+        <div className="w-full px-10 max-[440px]:px-2 max-[830px]:px-2 select-none cursor-pointer">
             {
                ldata.length>0 && !isLoading?(<>
                 <Swiper

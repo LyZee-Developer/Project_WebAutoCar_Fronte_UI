@@ -18,5 +18,7 @@ const ui={
     tr200:"transition-all duration-200 ease-in",
     animation:"animate-pulse bg-loading"
 }
-
-export {ui,str,translate};
+const isEmptyData=(data:any)=>{
+    return Object.keys(data).length === 0 || data=="" || data==null || data==undefined || data.length==0;
+}
+export {ui,str,translate,isEmptyData};

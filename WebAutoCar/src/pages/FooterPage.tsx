@@ -9,7 +9,7 @@ import { setOwnInfo } from '../store/system/SystemStore'
 import { socials } from '../utils/system_data'
 import { https } from '../utils/https'
 import type { IOwnerInfo } from '../interfaces/info/info'
-import { translate } from '../utils/GlobalHelper'
+import { translate, ui } from '../utils/GlobalHelper'
 const FooterPage = () => {
     var isDark = useSelector((state:RootState)=>state.system.isDark);
     const tr = useSelector((state:RootState)=>state.system.language);
@@ -72,9 +72,8 @@ const FooterPage = () => {
                             {
                                 !isLoading?(<><div className='w-[40px] h-[40px] rounded-full' onClick={()=>onClickSocial(val)}>
                                 <img src={val.img} alt=""  className='w-full h-full object-contain' />
-                            </div></>):(<div className='constrast '>
-                            <div className='w-[40px] h-[40px]   bg-card animate-pulse rounded-full ' >
-                            </div>
+                            </div></>):(<div className=' '>
+                            <div className={`w-[40px] h-[40px]   bg-card animate-pulse rounded-full ${ui.animation}`} ></div>
                             </div>)
                             }
                         </>)
@@ -95,13 +94,14 @@ const FooterPage = () => {
                                 }
                             </>):(<></>)
                         }
-                </div></>):(<><div className={`flex constrast flex-col gap-y-3 font-bold text-[18px]`}>
-                    <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
-                    <div className='w-[180px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
-                    <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
-                    <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
-                    <div className='w-[100px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
-                    <div className='w-[180px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                </div></>):(<><div className={`flex  flex-col gap-y-3 font-bold text-[18px]`}>
+                    <div className={`w-[200px] h-[20px] color-4 rounded-2xl ${ui.animation}`}></div>
+                    <div className={`w-[200px] h-[20px] color-4 rounded-2xl ${ui.animation}`}></div>
+                    <div className={`w-[200px] h-[20px] color-4 rounded-2xl ${ui.animation}`}></div>
+                    <div className={`w-[200px] h-[20px] color-4 rounded-2xl ${ui.animation}`}></div>
+                    <div className={`w-[200px] h-[20px] color-4 rounded-2xl ${ui.animation}`}></div>
+                    <div className={`w-[200px] h-[20px] color-4 rounded-2xl ${ui.animation}`}></div>
+                   
                 </div></>)
                 }
             </div>
@@ -140,14 +140,14 @@ const FooterPage = () => {
                             <div className='text-[16px] color-3'>{info?.Email}</div>
                         </div>
                     </div>
-                </div></>):(<><div className='flex constrast gap-y-3 flex-col '>
+                </div></>):(<><div className='flex  gap-y-3 flex-col '>
                     <div className='flex gap-x-3 color-3 '>
                         <div>
                             <FontAwesomeIcon icon={faPhone} />
                         </div>
                         <div className='flex flex-col  gap-y-3'>
-                             <div className='w-[80px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
-                              <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                             <div className={`w-[80px] h-[20px] color-4 rounded-2xl  ${ui.animation}`}></div>
+                              <div className={`w-[200px] h-[20px] color-4 rounded-2xl ${ui.animation}`}></div>
                         </div>
                     </div>
                     <div className='flex gap-x-3 color-3 '>
@@ -155,8 +155,8 @@ const FooterPage = () => {
                             <FontAwesomeIcon icon={faPhone} />
                         </div>
                         <div className='flex flex-col gap-y-3'>
-                             <div className='w-[80px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
-                              <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                             <div className={`w-[80px] h-[20px] color-4 rounded-2xl ${ui.animation}`}></div>
+                              <div className={`w-[200px] h-[20px] color-4 rounded-2xl ${ui.animation}`}></div>
                         </div>
                     </div>
                     <div className='flex gap-x-3 color-3 '>
@@ -164,8 +164,8 @@ const FooterPage = () => {
                            <FontAwesomeIcon icon={faEnvelope} />
                         </div>
                         <div className='flex flex-col gap-y-3'>
-                             <div className='w-[80px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
-                              <div className='w-[200px] h-[20px] color-4 rounded-2xl bg-card animate-pulse'></div>
+                             <div className={`w-[80px] h-[20px] color-4 rounded-2xl ${ui.animation} `}></div>
+                              <div className={`w-[200px] h-[20px] color-4 rounded-2xl  ${ui.animation}`}></div>
                         </div>
                     </div>
                 </div></>)
@@ -175,8 +175,8 @@ const FooterPage = () => {
                 <img src={map} alt="" />
                 <div className='w-full h-full transition-all ease-in-out group-hover:opacity-100 opacity-0 bg-[#00000067]  absolute top-0 left-0'></div>
                 <div className='absolute left-1/2 top-1/2 -translate-y-1/2 group-hover:opacity-100! opacity-0 -translate-x-1/2 text-white'>Click to preview location</div>
-            </div></>):(<div className='constrast'>
-            <div className="w-[400px]   h-[150px]  rounded-xl animate-pulse bg-card color-4 group relative cursor-pointer" >
+            </div></>):(<div className=''>
+            <div className={`w-[400px]   h-[150px]  rounded-xl  ${ui.animation} color-4 group relative cursor-pointer`} >
             </div></div>)}
            
         </div>

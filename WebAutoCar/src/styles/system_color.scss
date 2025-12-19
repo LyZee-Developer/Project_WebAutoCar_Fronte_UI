@@ -13,6 +13,7 @@
     --loading:#d5d5d561;
     --bd-color : #c9c9c9;
     --bd-constra-color : #414141;
+     --bd-color-100 : #f9f9f9;
 }
 .dark{
     --bg:rgb(0, 0, 0);
@@ -29,6 +30,7 @@
     --loading:#d9d6d61a;
     --bd-color : #414141;
     --bd-constra-color : #c9c9c9;
+    --bd-color-100 : #161616;
 }
 body{
     background-color: var(--bg) !important;
@@ -53,6 +55,9 @@ body{
 }
 .bd-card{
     border: 1px solid var(--bd-color) !important;
+}
+.bg-card-100{
+    background: var(--bd-color-100) !important;
 }
 .constrast {
     .color-1{

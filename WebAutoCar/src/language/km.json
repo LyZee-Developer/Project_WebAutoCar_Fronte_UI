@@ -22,6 +22,11 @@
     "contact_now":"ទំនាក់ទំនងឥឡូវនេះ",
     "why_choose":"មូលហេតុជ្រើសរើស",  
     "booking_appointment":"កក់ការណាត់ជួប",
-    "please_describe_the_problem_with_your_car_once_we_receive_your_information_we_will_contact_you_shortly":"សូមពិពណ៌នាអំពីបញ្ហាជាមួយរថយន្តរបស់អ្នក។ នៅពេលដែលយើងទទួលបានព័ត៌មានរបស់អ្នក យើងនឹងទាក់ទងអ្នកក្នុងពេលឆាប់ៗនេះ។"
+    "please_describe_the_problem_with_your_car_once_we_receive_your_information_we_will_contact_you_shortly":"សូមពិពណ៌នាអំពីបញ្ហាជាមួយរថយន្តរបស់អ្នក។ នៅពេលដែលយើងទទួលបានព័ត៌មានរបស់អ្នក យើងនឹងទាក់ទងអ្នកក្នុងពេលឆាប់ៗនេះ។",
+     "select_year_of_car":"ជ្រើសរើសឡានរបស់អ្នក",
+    "sending":"កំពុងផ្ញើរជូន",
+    "please_tell_me_about_your_problem_of_car":"សូមពិពណ៌នាអំពីបញ្ហាជាមួយរថយន្តរបស់អ្នក។",
+    "make_sure_you_phone_number_is_correctly":"តើអ្នកប្រាកដហើយឬនៅ ថាលេខទូរស័ព្ទរបស់អ្នកត្រឹមត្រូវ។",
+    "full_name_is_required":"ទាមទាអោយមានឈ្មោះ"
   
 }

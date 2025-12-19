@@ -1,0 +1,33 @@
+{
+    "home":"家",
+    "contact_us":"联系我们",
+    "about_us":"关于我们",
+    "submit":"提交",
+    "our_work":"我们的工作",
+    "our_service":"我们的服务",
+    "portfolio":"文件夹",
+    "email":"电子邮件",
+    "phone":"电话",
+    "working_hour":"工作时间",
+    "we_are_proud_of_our_recent_success_work":"我们为近期取得的成功感到自豪",
+    "our_partner_support":"我们的合作伙伴支持",
+    "full_name":"全名",
+    "car":"车",
+    "service":"服务",
+    "year":"年",
+    "problem":"问题",
+    "please_select":"请选择..",
+    "booking_your_appointment":"预约",
+    "why_choose_us":"为什么选择我们",
+    "contact_now":"现在联系",
+    "why_choose":"为什么选择",  
+    "booking_appointment":"预约",
+    "please_describe_the_problem_with_your_car_once_we_receive_your_information_we_will_contact_you_shortly":"请描述一下您车辆的问题，收到您的信息后，我们会尽快与您联系。",
+    
+      "select_year_of_car":"选择汽车年份",
+    "sending":"发送",
+    "please_tell_me_about_your_problem_of_car":"请告诉我您的汽车问题",
+    "make_sure_you_phone_number_is_correctly":"请确保您的电话号码正确",
+    "full_name_is_required":"必须提供全名"
+  
+}

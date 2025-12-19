@@ -9,7 +9,12 @@ import ca from '../assets/flag/Flag_of_Cambodia.svg.webp'
 import br from '../assets/flag/Flag_of_Brazil.svg.webp'
 import la from '../assets/flag/Flag_of_Laos.svg.png'
 import vn from '../assets/flag/Flag_of_Vietnam.svg.webp'
+import ch from '../assets/flag/Flag_of_the_Peoples_Republic_of_China.webp'
+import ida from '../assets/flag/Flag_of_India.svg.webp'
+import ind from '../assets/flag/Flag_of_Indonesia.svg.webp'
+import my from '../assets/flag/Flag_of_Myanmar.svg.webp'
 import us from '../assets/flag/Flag_of_the_United_States_(DDD-F-416E_specifications).svg.webp'
+
 import type { Country } from "../interfaces/country/country";
 //langauge
 import lang_ca from '../language/km.json';
@@ -17,6 +22,10 @@ import lang_en from '../language/us.json';
 import lang_br from '../language/br.json';
 import lang_lao from '../language/lao.json';
 import lang_vn from '../language/vn.json';
+import lang_ch from '../language/ch.json';
+import lang_my from '../language/my.json';
+import lang_ind from '../language/ind.json';
+import lang_ida from '../language/ida.json';
 const currentYear: number = new Date().getFullYear();
 const getYearsToCurrent = ():number[]=>{
     const years:number[] = [];
@@ -34,6 +43,10 @@ const getLanguage = (code:string) : Record<string, string> =>{
     else if(code=="vn") translate = lang_vn;
     else if(code=="br") translate = lang_br;
     else if(code=="lao") translate = lang_lao;
+    else if(code=="ch") translate = lang_ch;
+    else if(code=="my") translate = lang_my;
+    else if(code=="ind") translate = lang_ind;
+    else if(code=="ida") translate = lang_ida;
     return translate;
 }
 const country:Country[] = [
@@ -49,6 +62,12 @@ const country:Country[] = [
         EnglishName:"U.S.A",
         Image:us
     },
+     {
+        Code:"ch",
+        Name:"ចិន",
+        EnglishName:"China",
+        Image:ch
+    },
     {
         Code:"vn",
         Name:"វៀតណាម",
@@ -61,11 +80,29 @@ const country:Country[] = [
         EnglishName:"Brazil",
         Image:br
     },
-     {
+    {
         Code:"lao",
         Name:"ឡាវ",
         EnglishName:"Lao",
         Image:la
+    },
+    {
+        Code:"ind",
+        Name:"ឥណ្ឌូនេស៊ី",
+        EnglishName:"Indonesia",
+        Image:ind
+    },
+    {
+        Code:"ida",
+        Name:"ឥណ្ឌា",
+        EnglishName:"India",
+        Image:ida
+    },
+    {
+        Code:"my",
+        Name:"មីយ៉ាន់ម៉ា",
+        EnglishName:"Myanmar",
+        Image:my
     }
 ]
 const socials = [
@@ -131,11 +168,10 @@ const ShowSnackBar=(message:string,type:string="")=>{
       style: {
         backgroundColor: backgroundColor, // Set the background color
         color: color, // Set the text color
+        borderRadius: 15
       },
     });
 
 }
-const isEmptyData=(data:any):any=>{
-    return data=="" || data==null || data==undefined || data?.length==0;
-}
-export {header as data_header,duration,socials,country,getYearsToCurrent,ShowSnackBar,isEmptyData,getLanguage};
+
+export {header as data_header,duration,socials,country,getYearsToCurrent,ShowSnackBar,getLanguage};

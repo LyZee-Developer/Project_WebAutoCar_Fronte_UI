@@ -76,10 +76,10 @@ const ServiceComponent = () => {
   }, [list]); // Empty dependency array ensures it runs once on mount
   return (
     <div>
-        <div className="w-full flex justify-center flex-col items-center gap-y-2  pb-10 px-[20px] pt-20">
+        <div className="w-full flex max-[430px]:p-2 max-[1600px]:p-2 max-[1300px]:p-2 max-[780px]:p-2 max-[830px]:p-2 justify-center flex-col items-center gap-y-2  pb-10 px-[20px] pt-20">
             {
                 !isLoading?(<><h3 className="font-medium color-3">{tr.our_service}</h3>
-            <h1 className="text-[30px] font-bold color-4 max-[400px]:text-[20px] ">{translate(list?.Title||"",list?.TitleEnglish||"")}</h1>
+            <h1 className="text-[30px] font-bold color-4 max-[430px]:text-[20px]">{translate(list?.Title||"",list?.TitleEnglish||"")}</h1>
             <div className="max-w-[800px] text-center color-2"><p>{translate(list?.Description||"",list?.DescriptionEnglish||"")}</p></div></>):(
             <div className='flex flex-col w-full justify-center items-center gap-y-3'>
                 <div className={`w-[100px] h-[10px] ${ui.animation}`}></div>
@@ -89,7 +89,7 @@ const ServiceComponent = () => {
             </div>)
             }
         </div>
-        <div className={`grid grid-cols-[repeat(auto-fill,minmax(330px,1fr))]  gap-7 max-w-[1000px] mx-auto px-[20px]`}>
+        <div className={`grid grid-cols-[repeat(auto-fill,minmax(330px,1fr))] max-[430px]:px-2 gap-7 max-w-[1000px] mx-auto px-[20px]`}>
             {
                 listService.length>0?(<>
                 {
