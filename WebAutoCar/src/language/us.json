@@ -23,9 +23,10 @@
      "why_choose":"Why Choose",
        "booking_appointment":"Booking Appointment",
        "please_describe_the_problem_with_your_car_once_we_receive_your_information_we_will_contact_you_shortly":"Please describe the problem with your car. Once we receive your information, we will contact you shortly.",
-        "select_year_of_car":"ကား၏နှစ်ကိုရွေးချယ်ပါ။",
-    "sending":"ပေးပို့ခြင်း။",
-    "please_tell_me_about_your_problem_of_car":"ကျေးဇူးပြုပြီး မင်းရဲ့ကားပြဿနာကို ပြောပြပေးပါ။",
-    "make_sure_you_phone_number_is_correctly":"သင့်ဖုန်းနံပါတ်မှန်ကန်ကြောင်း သေချာပါစေ။",
-    "full_name_is_required":"အမည်အပြည့်အစုံ လိုအပ်ပါသည်။"
+        "select_year_of_car":"Select year of car",
+    "sending":"Sending",
+    "please_tell_me_about_your_problem_of_car":"Please tell me about your problem of car",
+    "make_sure_you_phone_number_is_correctly":"Make sure your phone number is correctly",
+    "full_name_is_required":"full name is required!",
+    "your_info_is_invalid":"Your info is invalid!"
 }

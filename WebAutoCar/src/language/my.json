@@ -27,6 +27,7 @@
     "sending":"ပေးပို့ခြင်း။",
     "please_tell_me_about_your_problem_of_car":"ကျေးဇူးပြုပြီး မင်းရဲ့ကားပြဿနာကို ပြောပြပေးပါ။",
     "make_sure_you_phone_number_is_correctly":"သင့်ဖုန်းနံပါတ်မှန်ကန်ကြောင်း သေချာပါစေ။",
-    "full_name_is_required":"အမည်အပြည့်အစုံ လိုအပ်ပါသည်။"
+    "full_name_is_required":"အမည်အပြည့်အစုံ လိုအပ်ပါသည်။",
+    "your_info_is_invalid":"သင့်အချက်အလက်သည် မမှန်ကန်ပါ။"
   
 }

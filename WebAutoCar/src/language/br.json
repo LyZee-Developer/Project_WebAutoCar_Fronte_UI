@@ -27,5 +27,6 @@
     "sending":"enviando",
     "please_tell_me_about_your_problem_of_car":"Por favor, descreva o problema do seu carro.",
     "make_sure_you_phone_number_is_correctly":"Certifique-se de que o seu número de telefone está correto.",
-    "full_name_is_required":"nome completo é obrigatório"
+    "full_name_is_required":"nome completo é obrigatório",
+    "your_info_is_invalid":"as suas informações são inválidas"
 }

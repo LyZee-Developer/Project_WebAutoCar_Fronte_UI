@@ -88,7 +88,7 @@ const BookAppointmentComponent = () => {
        isValid.push(true)
     }
     if(isValid.some(v=>v==true)){
-      ShowSnackBar("Your information is invalid!","error")
+      ShowSnackBar(tr.your_info_is_invalid,"error")
       setPending(false)
       return ;
     }

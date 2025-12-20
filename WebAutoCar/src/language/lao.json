@@ -27,5 +27,6 @@
     "sending":"ສົ່ງ",
     "please_tell_me_about_your_problem_of_car":"ກະລຸນາບອກຂ້ອຍກ່ຽວກັບບັນຫາລົດຂອງເຈົ້າ",
     "make_sure_you_phone_number_is_correctly":"ໃຫ້ແນ່ໃຈວ່າເບີໂທລະສັບຂອງເຈົ້າຖືກຕ້ອງ",
-    "full_name_is_required":"ຊື່ເຕັມແມ່ນຕ້ອງການ"
+    "full_name_is_required":"ຊື່ເຕັມແມ່ນຕ້ອງການ",
+    "your_info_is_invalid":"ຂໍ້ມູນຂອງທ່ານບໍ່ຖືກຕ້ອງ"
 }

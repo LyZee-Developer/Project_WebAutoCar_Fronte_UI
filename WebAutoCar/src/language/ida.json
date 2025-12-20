@@ -27,6 +27,7 @@
     "sending":"भेज रहा हूँ",
     "please_tell_me_about_your_problem_of_car":"कृपया मुझे अपनी कार की समस्या के बारे में बताएं",
     "make_sure_you_phone_number_is_correctly":"सुनिश्चित करें कि आपका फ़ोन नंबर सही है",
-    "full_name_is_required":"पूरा नाम आवश्यक है"
+    "full_name_is_required":"पूरा नाम आवश्यक है",
+    "your_info_is_invalid":"आपकी जानकारी अमान्य है"
   
 }

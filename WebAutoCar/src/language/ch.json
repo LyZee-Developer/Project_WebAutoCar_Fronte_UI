@@ -28,6 +28,7 @@
     "sending":"发送",
     "please_tell_me_about_your_problem_of_car":"请告诉我您的汽车问题",
     "make_sure_you_phone_number_is_correctly":"请确保您的电话号码正确",
-    "full_name_is_required":"必须提供全名"
+    "full_name_is_required":"必须提供全名",
+    "your_info_is_invalid":"您的信息无效"
   
 }
