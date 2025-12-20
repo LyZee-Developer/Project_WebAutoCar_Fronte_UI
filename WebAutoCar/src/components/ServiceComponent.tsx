@@ -97,7 +97,7 @@ const ServiceComponent = () => {
                     <div className={`bg-card  flex flex-col gap-y-4 w-full p-5 rounded-2xl ${val}`}>
                         <div className='w-[45px] h-[45px]'> <img className='w-full h-full' src={ imageService[index>6?6:index]} alt="" /></div>
                         <div>
-                            <div className='font-bold text-[20px] color-4  max-[400px]:text-[18px]'>{translate(val.Title,val.TitleEnglish)}</div>
+                            <div className='font-bold text-[20px] color-4  max-[400px]:text-[18px]'>{translate(val?.Title,val?.TitleEnglish)}</div>
                             <div className='color-3'>{translate(val?.Description,val?.DescriptionEnglish)}</div>
                         </div>
                     </div>))

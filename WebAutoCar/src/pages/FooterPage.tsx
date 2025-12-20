@@ -71,7 +71,7 @@ const FooterPage = () => {
                         socials.map(val=><>
                             {
                                 !isLoading?(<><div className='w-[40px] h-[40px] rounded-full' onClick={()=>onClickSocial(val)}>
-                                <img src={val.img} alt=""  className='w-full h-full object-contain' />
+                                <img src={val?.img} alt=""  className='w-full h-full object-contain' />
                             </div></>):(<div className=' '>
                             <div className={`w-[40px] h-[40px]   bg-card animate-pulse rounded-full ${ui.animation}`} ></div>
                             </div>)
@@ -89,7 +89,7 @@ const FooterPage = () => {
                             serviceList.length>0?(<>
                                 {
                                     [...serviceList].slice(0,6).map(val=>(<>
-                                        <div className='color-3'>{ translate(val.Title,val.TitleEnglish) }</div>
+                                        <div className='color-3'>{ translate(val?.Title,val?.TitleEnglish) }</div>
                                     </>))
                                 }
                             </>):(<></>)

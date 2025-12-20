@@ -114,7 +114,7 @@ const AboutUSComponent = () => {
                         <div className='max-[430px]:text-[20px] flex gap-x-3 items-center'>
                             <div>{tr.why_choose}</div>
                             {!isLoadingAboutUs?(<>
-                                <div> {translate(info.Name || "",info.EnglishName || "")}</div>
+                                <div> {translate(info?.Name || "",info?.EnglishName || "")}</div>
                             </>):(<>
                                 <div className={`w-[200px] h-[19px] rounded-md ${ui.animation}`}></div>
                             </>)}
@@ -136,9 +136,9 @@ const AboutUSComponent = () => {
                             aboutUsDetail.map(val=>(<div className={`flex flex-col gap-y-4 w-full pt-5 rounded-2xl  ${val}`}>
                             <div className='flex gap-x-2'>
                                 <div className='w-[18px] h-[18px]'><img src={setting_point} className='w-full h-full' alt="" /></div>
-                                <div className='font-medium text-[20px] max-[430px]:text-[16px] color-4'>{translate(val.Title,val.TitleEnglish)}</div>
+                                <div className='font-medium text-[20px] max-[430px]:text-[16px] color-4'>{translate(val?.Title,val?.TitleEnglish)}</div>
                             </div>
-                            <div className='color-3'>{translate(val.Description,val.DescriptionEnglish)}</div>
+                            <div className='color-3'>{translate(val?.Description,val?.DescriptionEnglish)}</div>
                         </div>))
                         }</>):(<>
                             {
@@ -166,9 +166,9 @@ const AboutUSComponent = () => {
                     <div className="carousel-track">
                         {
                             !isLoading?(<>{
-                                [...listPartner].map(val=>(<div className={`flex items-center gap-x-3 ${val.Id}`}>
-                                <img src={val.PathImage==""?noimage:`http://localhost:8989/${val.PathImage}`} alt="" className="w-[40px] h-[40px] rounded-full" />
-                                <div className='text-white'>{val.Name}</div>
+                                [...listPartner].map(val=>(<div className={`flex items-center gap-x-3 ${val?.Id}`}>
+                                <img src={val?.PathImage==""?noimage:`http://localhost:8989/${val?.PathImage}`} alt="" className="w-[40px] h-[40px] rounded-full" />
+                                <div className='text-white'>{val?.Name}</div>
                             </div>))
                             }</>):(<>
                                 {
