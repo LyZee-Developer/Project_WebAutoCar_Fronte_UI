@@ -21,10 +21,10 @@ const SlideMenuComponent = () => {
     }
   return (
     <>
-    <div className={`w-screen h-screen fixed min-[600px]:opacity-0  ${ui.tr200} left-0 top-0 z-5 bg-[#000000b6] blur-[10px] ${!isShowNavLeftMenu?`hidden`:``} `}></div>
-    <div className={`fixed min-[640px]:hidden z-10 top-0 ${isShowNavLeftMenu?`left-0`:`left-[-430px]`}  w-[70%] bg-black h-screen ${ui.tr200}`}>
+    <div className={`w-screen h-screen fixed min-[600px]:opacity-0  ${ui.tr200} left-0 top-0 z-230 bg-[#000000b6] blur-[10px] ${!isShowNavLeftMenu?`hidden`:``} `}></div>
+    <div className={`fixed min-[640px]:hidden z-300 top-0 ${isShowNavLeftMenu?`left-0`:`left-[-430px]`}  w-[70%] bg-black h-screen ${ui.tr200}`}>
             <div className="flex justify-between items-center pl-1 pr-4 pt-2">
-                <div className='w-[130px]'>
+                <div className='w-[100px]'>
                     <img src={logor} className='w-full h-full ' alt="" />
                 </div>
                 <div className="text-white cursor-pointer" onClick={()=>CloseNavLeft()}>
