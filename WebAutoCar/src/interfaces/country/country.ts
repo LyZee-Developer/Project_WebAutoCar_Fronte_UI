@@ -1,6 +1,6 @@
 export interface Country{
-    Code:string,
-    Name:string,
-    EnglishName:string
-    Image:string,
+    code:string,
+    name:string,
+    englishName:string
+    image:string,
 }

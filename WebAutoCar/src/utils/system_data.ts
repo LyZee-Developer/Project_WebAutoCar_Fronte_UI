@@ -51,58 +51,58 @@ const getLanguage = (code:string) : Record<string, string> =>{
 }
 const country:Country[] = [
     {
-        Code:"cam",
-        Name:"ខ្មែរ",
-        EnglishName:"Cambodia",
-        Image:ca
+        code:"cam",
+        name:"ខ្មែរ",
+        englishName:"Cambodia",
+        image:ca
     },
      {
-        Code:"us",
-        Name:"អង់គ្លេស",
-        EnglishName:"U.S.A",
-        Image:us
+        code:"us",
+        name:"អង់គ្លេស",
+        englishName:"U.S.A",
+        image:us
     },
      {
-        Code:"ch",
-        Name:"ចិន",
-        EnglishName:"China",
-        Image:ch
+        code:"ch",
+        name:"ចិន",
+        englishName:"China",
+        image:ch
     },
     {
-        Code:"vn",
-        Name:"វៀតណាម",
-        EnglishName:"Vietnam",
-        Image:vn
+        code:"vn",
+        name:"វៀតណាម",
+        englishName:"Vietnam",
+        image:vn
     },
     {
-        Code:"br",
-        Name:"ប្រេហ្ស៊ីល",
-        EnglishName:"Brazil",
-        Image:br
+        code:"br",
+        name:"ប្រេហ្ស៊ីល",
+        englishName:"Brazil",
+        image:br
     },
     {
-        Code:"lao",
-        Name:"ឡាវ",
-        EnglishName:"Lao",
-        Image:la
+        code:"lao",
+        name:"ឡាវ",
+        englishName:"Lao",
+        image:la
     },
     {
-        Code:"ind",
-        Name:"ឥណ្ឌូនេស៊ី",
-        EnglishName:"Indonesia",
-        Image:ind
+        code:"ind",
+        name:"ឥណ្ឌូនេស៊ី",
+        englishName:"Indonesia",
+        image:ind
     },
     {
-        Code:"ida",
-        Name:"ឥណ្ឌា",
-        EnglishName:"India",
-        Image:ida
+        code:"ida",
+        name:"ឥណ្ឌា",
+        englishName:"India",
+        image:ida
     },
     {
-        Code:"my",
-        Name:"មីយ៉ាន់ម៉ា",
-        EnglishName:"Myanmar",
-        Image:my
+        code:"my",
+        name:"មីយ៉ាន់ម៉ា",
+        englishName:"Myanmar",
+        image:my
     }
 ]
 const socials = [

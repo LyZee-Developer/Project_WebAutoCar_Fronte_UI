@@ -27,19 +27,21 @@ const ServiceComponent = () => {
         const {data} = await https({
             url:"http://localhost:8989/api/block_content/list",
             data:{
-                Id:0,
-                Search:"",
-                OrderBy:"Id",
-                OrderDir:"desc",
-                IsComplete:false,
-                Page:1,
-                Record:10
+                id:0,
+                search:"",
+                orderBy:"Id",
+                orderDir:"desc",
+                isComplete:false,
+                page:1,
+                record:10,
+                type:"service"
             },
             method:"post"
         });
         if(data.length > 0 ){
             setIsLoading(false);
-            var checkList = data?.filter((v:any)=>v.Type=="Service");
+            var checkList = data?.filter((v:any)=>v.type=="Service");
+            console.log("service data => ",checkList)
             if (checkList.length>0) setList(checkList[0])
           
         } 
@@ -55,11 +57,12 @@ const ServiceComponent = () => {
                 isComplete:true,
                 page:1,
                 record:10,
-                contentBlockId:list?.Id
+                contentBlockId:list?.id
             },
             method:"post"
         });
         if(data.length > 0 ){
+            console.log("service",data)
             setIsLoading(false);
             setListService(data)
             dispatch(setDataService(data));
@@ -79,8 +82,8 @@ const ServiceComponent = () => {
         <div className="w-full flex max-[430px]:p-2 max-[1600px]:p-2 max-[1300px]:p-2 max-[780px]:p-2 max-[830px]:p-2 justify-center flex-col items-center gap-y-2  pb-10 px-[20px] pt-20">
             {
                 !isLoading?(<><h3 className="font-medium color-3">{tr.our_service}</h3>
-            <h1 className="text-[30px] font-bold color-4 max-[430px]:text-[20px]">{translate(list?.Title||"",list?.TitleEnglish||"")}</h1>
-            <div className="max-w-[800px] text-center color-2"><p>{translate(list?.Description||"",list?.DescriptionEnglish||"")}</p></div></>):(
+            <h1 className="text-[30px] font-bold color-4 max-[430px]:text-[20px]">{translate(list?.title||"",list?.titleEnglish||"")}</h1>
+            <div className="max-w-[800px] text-center color-2"><p>{translate(list?.description||"",list?.descriptionEnglish||"")}</p></div></>):(
             <div className='flex flex-col w-full justify-center items-center gap-y-3'>
                 <div className={`w-[100px] h-[10px] ${ui.animation}`}></div>
                 <div className={`max-w-[800px] w-full h-[30px] ${ui.animation}`}></div>
@@ -97,8 +100,8 @@ const ServiceComponent = () => {
                     <div className={`bg-card  flex flex-col gap-y-4 w-full p-5 rounded-2xl ${val}`}>
                         <div className='w-[45px] h-[45px]'> <img className='w-full h-full' src={ imageService[index>6?6:index]} alt="" /></div>
                         <div>
-                            <div className='font-bold text-[20px] color-4  max-[400px]:text-[18px]'>{translate(val?.Title,val?.TitleEnglish)}</div>
-                            <div className='color-3'>{translate(val?.Description,val?.DescriptionEnglish)}</div>
+                            <div className='font-bold text-[20px] color-4  max-[400px]:text-[18px]'>{translate(val?.title,val?.titleEnglish)}</div>
+                            <div className='color-3'>{translate(val?.description,val?.descriptionEnglish)}</div>
                         </div>
                     </div>))
                 }

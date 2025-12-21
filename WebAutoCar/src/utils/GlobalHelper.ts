@@ -10,7 +10,7 @@ const translate=(kh:string,en:string)=>{
         return;
     }
     var obj = JSON.parse(lang);
-    if(obj.Code !=="cam") value = en;
+    if(obj.code !=="cam") value = en;
     return value;
 }
 const ui={

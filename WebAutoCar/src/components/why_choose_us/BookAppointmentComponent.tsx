@@ -206,12 +206,10 @@ const BookAppointmentComponent = () => {
               {
                 car.map((val)=>{
                   return (
-                    <>
-                        <ListBox.Item id={val.Id} textValue={translate(val.Name,val.EnglishName)} className={hoverSelect}>
-                            {translate(val.Name,val.EnglishName)}
+                        <ListBox.Item key={val.id} id={val.id} textValue={translate(val.name,val.englishName)} className={hoverSelect}>
+                            {translate(val.name,val.englishName)}
                             <ListBox.ItemIndicator />
                         </ListBox.Item>
-                    </>
                   )
                 })
               }
@@ -241,12 +239,10 @@ const BookAppointmentComponent = () => {
               {
                 service.map((val)=>{
                   return (
-                    <>
-                        <ListBox.Item id={val.Id} textValue={translate(val.Name,val.EnglishName)} className={hoverSelect} >
-                            {translate(val.Name,val.EnglishName)}
+                        <ListBox.Item id={val.id} textValue={translate(val.name,val.englishName)} className={hoverSelect} >
+                            {translate(val.name,val.englishName)}
                             <ListBox.ItemIndicator />
                         </ListBox.Item>
-                    </>
                   )
                 })
               }
@@ -270,14 +266,11 @@ const BookAppointmentComponent = () => {
       </Select.Trigger>
       <Select.Popover>
         <ListBox className={`${isDark? " bg-[#424242] text-white":""}`}> 
-          {YearsProduct.map(val=>{
+          {YearsProduct.map((val,index)=>{
           return (
-            <>
-            
-              <ListBox.Item id={`${val}`} textValue={`${val}`} className={hoverSelect}>
+              <ListBox.Item id={`${val}`} key={index} textValue={`${val}`} className={hoverSelect}>
                 {val}
               </ListBox.Item>
-            </>
           )
         })}
         </ListBox>

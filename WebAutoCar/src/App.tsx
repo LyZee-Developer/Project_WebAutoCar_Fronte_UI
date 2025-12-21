@@ -32,8 +32,8 @@ function App() {
   const country = useSelector((state:RootState)=>state.system.country);
   const dispatch = useDispatch();
   useEffect(()=>{
-    dispatch(setLanguage(country.Code))
-    if(country.Code=="cam") document.body.classList.add(`kh`);
+    dispatch(setLanguage(country.code))
+    if(country.code=="cam") document.body.classList.add(`kh`);
     else document.body.classList.remove(`en`);
   },[country])
   useEffect(()=>{

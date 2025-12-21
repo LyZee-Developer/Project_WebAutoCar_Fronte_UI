@@ -35,9 +35,9 @@ const HeroSectionComponent=()=> {
             <div className='max-w-[500px] flex flex-col gap-y-5 '>
                 {
                     !loading?(<>
-                        <div className=' max-[590px]:color-4! color-3'>{translate(info?.SubDescription||"",info?.SubDescriptionEnglish||"")}</div>
-                        <div className='text-5xl font-medium   max-[590px]:text-[25px] color-4 typing-animation'>{translate(info?.Name || "",info?.EnglishName || "")}</div>
-                        <div className='leading-[25px] max-[590px]:color-4! color-3 max-[510px]:hidden'>{translate(info?.Description||"",info?.DescriptionEnglish ||"")}</div>
+                        <div className=' max-[590px]:color-4! color-3'>{translate(info?.subDescription||"",info?.subDescriptionEnglish||"")}</div>
+                        <div className='text-5xl font-medium   max-[590px]:text-[25px] color-4 typing-animation'>{translate(info?.name || "",info?.englishName || "")}</div>
+                        <div className='leading-[25px] max-[590px]:color-4! color-3 max-[510px]:hidden'>{translate(info?.description||"",info?.descriptionEnglish ||"")}</div>
                     </>):(<>
                         <div className={`max-[590px]:color-4!  w-[250px] h-[20px] color-3 ${ui.animation} `}></div>
                         <div className={`text-5xl font-medium w-[200px] h-[20px] max-[590px]:text-[25px] color-4 ${ui.animation} `}></div>

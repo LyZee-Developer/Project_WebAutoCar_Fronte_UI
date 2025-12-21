@@ -37,7 +37,7 @@ const FooterPage = () => {
             },
             method:"post"
         });
-            console.log("->",data)
+            console.log("->222",data)
         if(data.length > 0 ){
             setIsLoading(false);
             setInfo(data[0])
@@ -52,10 +52,10 @@ const FooterPage = () => {
 
   const onClickSocial=(social:any)=>{
     var link:string | undefined = "";
-    if(social.code=="facebook") link=info?.FaceboolURL;
-    else if(social.code=="instagram") link=info?.InstagramURL;
-    else if(social.code=="telegram") link=info?.TelegramURL;
-    else if(social.code=="youtube") link=info?.YoutubeURL;
+    if(social.code=="facebook") link=info?.faceboolURL;
+    else if(social.code=="instagram") link=info?.instagramURL;
+    else if(social.code=="telegram") link=info?.telegramURL;
+    else if(social.code=="youtube") link=info?.youtubeURL;
     if(link!="" && link!=undefined) window.open(link,"_blank")
   }
   return (
@@ -64,7 +64,7 @@ const FooterPage = () => {
             <div className={`w-full h-full flex flex-col gap-y-10   `}>
                 <div className='w-[160px]'><img src={imgfix} alt="" /></div>
                 <div className='color-3'>
-                    {translate(info?.Description || "",info?.DescriptionEnglish|| "")}
+                    {translate(info?.description || "",info?.descriptionEnglish|| "")}
                 </div>
                 <div className='flex gap-x-4'>
                     {
@@ -89,7 +89,7 @@ const FooterPage = () => {
                             serviceList.length>0?(<>
                                 {
                                     [...serviceList].slice(0,6).map(val=>(<>
-                                        <div className='color-3'>{ translate(val?.Title,val?.TitleEnglish) }</div>
+                                        <div className='color-3'>{ translate(val?.title,val?.titleEnglish) }</div>
                                     </>))
                                 }
                             </>):(<></>)
@@ -114,9 +114,9 @@ const FooterPage = () => {
                             <FontAwesomeIcon icon={faPhone} />
                         </div>
                         {
-                           info?.WorkingInfo!="" && info?.WorkingInfo!=null  ?<><div>
+                           info?.workingInfo!="" && info?.workingInfo!=null  ?<><div>
                             <div className='text-[13px] color-2'>{tr.working_hour}:</div>
-                            <div className='text-[16px] color-3'>{info?.WorkingInfo}</div>
+                            <div className='text-[16px] color-3'>{info?.workingInfo}</div>
                         </div></>:""
                         }
                     </div>
@@ -125,9 +125,9 @@ const FooterPage = () => {
                             <FontAwesomeIcon icon={faPhone} />
                         </div>
                          {
-                           info?.Phone1!="" && info?.Phone1!=null  ?<><div>
+                           info?.phone1!="" && info?.phone1!=null  ?<><div>
                              <div className='text-[13px] color-2'>{tr.phone}:</div>
-                            <div className='text-[16px] color-3'>{info?.Phone} / {info?.Phone1}</div>
+                            <div className='text-[16px] color-3'>{info?.phone} / {info?.phone1}</div>
                         </div></>:""
                         }
                     </div>
@@ -137,7 +137,7 @@ const FooterPage = () => {
                         </div>
                         <div >
                             <div className='text-[13px] color-2'>{tr.email}:</div>
-                            <div className='text-[16px] color-3'>{info?.Email}</div>
+                            <div className='text-[16px] color-3'>{info?.email}</div>
                         </div>
                     </div>
                 </div></>):(<><div className='flex  gap-y-3 flex-col '>

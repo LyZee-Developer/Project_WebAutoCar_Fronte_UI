@@ -1,37 +1,37 @@
 export interface Car{
-    CreatedBy:string,
-    CreatedDate:Date,
-    Database:string,
-    EnglishName:string,
-    Id:number,
-    Name:string,
-    PathImage:string,
-    RecordCount:number,
-    Status:boolean,
-    UpdatedBy:string,
-    UpdatedDate:Date
+    createdBy:string,
+    createdDate:Date,
+    database:string,
+    englishName:string,
+    id:number,
+    name:string,
+    pathImage:string,
+    recordCount:number,
+    status:boolean,
+    updatedBy:string,
+    updatedDate:Date
 }
 
 export interface Service{
-    CreatedBy:string,
-    CreatedDate:Date,
-    Database:string,
-    EnglishName:string,
-    Id:number,
-    Name:string,
-    RecordCount:number,
-    Status:boolean,
-    UpdatedBy:string,
-    UpdatedDate:Date
+    createdBy:string,
+    createdDate:Date,
+    database:string,
+    englishName:string,
+    id:number,
+    name:string,
+    recordCount:number,
+    status:boolean,
+    updatedBy:string,
+    updatedDate:Date
 }
 
 export interface AppointmentData{
-    FullName: string,
-    Email:string,
-    Phone : string,
-    Phone1  : string,
-    CarId : number,
-    ServiceId: number,
-    Year: number,
-    Problem : string
+    fullName: string,
+    email:string,
+    phone : string,
+    phone1  : string,
+    carId : number,
+    serviceId: number,
+    year: number,
+    problem : string
 }

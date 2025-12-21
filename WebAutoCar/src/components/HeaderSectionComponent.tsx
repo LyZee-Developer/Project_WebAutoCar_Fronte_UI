@@ -63,16 +63,16 @@ const HeaderSectionComponent=()=> {
                   </div>
                   <div className='w-[30px] cursor-pointer h-[30px]  relative rounded-full  text-white flex justify-center items-center'>
                           <div className='w-[30px] p-1 h-[30px]  rounded-full flex justify-center items-center bd-card ' onClick={()=>{isShowModalLanguage(isShowModalLG)}}>
-                                        <img src={language.Image} className='w-full h-full object-cover rounded-full' alt="" />
+                                        <img src={language.image} className='w-full h-full object-cover rounded-full' alt="" />
                                     </div>
                         <div className={`absolute flex flex-col top-[44px] px-2 py-3 gap-y-2 ${isShowModalLG?"right-0":"right-[-200px]"}  bg-card-100  rounded-2xl ${ui.tr200}`}>
                               {
                                 country.map(val=>(<>
-                                  <div className={`flex gap-x-3 ${language.Code==val.Code? isDark?"bg-black":"bg-[#ededed]":""} items-end ${isDark?"hover:bg-black":"hover:bg-[#ededed]"}  rounded-xl py-2 px-6 pl-3 ${ui.tr100}`} onClick={()=>{selectLanguage(val)}}>
+                                  <div key={val.code} className={`flex gap-x-3 ${language.code==val.code? isDark?"bg-black":"bg-[#ededed]":""} items-end ${isDark?"hover:bg-black":"hover:bg-[#ededed]"}  rounded-xl py-2 px-6 pl-3 ${ui.tr100}`} onClick={()=>{selectLanguage(val)}}>
                                     <div className='w-[30px] p-1 h-[30px]  rounded-full flex justify-center items-center bd-card '>
-                                        <img src={val.Image} className='w-full h-full object-cover rounded-full' alt="" />
+                                        <img src={val.image} className='w-full h-full object-cover rounded-full' alt="" />
                                     </div>
-                                    <div className='color-3'>{val.EnglishName}</div>
+                                    <div className='color-3'>{val.englishName}</div>
                                 </div>
                                 </>))
                               }

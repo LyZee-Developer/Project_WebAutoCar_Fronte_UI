@@ -35,7 +35,7 @@ const PortfolioPage = () => {
             },
             method:"post"
         });
-        console.log("data",data)
+        console.log("data=>",data)
         if(data.length > 0 ){
             setIsLoading(false); 
             if (data!=undefined) setLData(data)
@@ -107,7 +107,7 @@ const PortfolioPage = () => {
                                 Duration=duration[Math.floor(Math.random()*duration.length)];
                                 return (
                                     <>
-                                    <SwiperSlide key={val.Id} className="h-full w-full bg-card">
+                                    <SwiperSlide key={val.id} className="h-full w-full bg-card">
                                             <Swiper
                                                 className="h-full w-full"
                                                 modules={[Navigation,Autoplay, Pagination]}
@@ -119,10 +119,10 @@ const PortfolioPage = () => {
                                                 pagination={{ clickable: true }}
                                             >
                                                 {
-                                                    !isLoading?(<>
+                                                    val.images.length > 0 && !isLoading ? (<>
                                                         {
-                                                        val.Images.map(v=><SwiperSlide key={v.Id} className="w-full h-full flex justify-center items-center">
-                                                            <img src={`${v.HostUrl}/${v.PathImage}`} alt="" className="object-contain w-full h-full" />
+                                                        val.images.map((v,index)=><SwiperSlide key={index} className="w-full h-full flex justify-center items-center">
+                                                            <img src={`${v.hostUrl}/${v.pathImage}`} alt="" className="object-contain w-full h-full" />
                                                         </SwiperSlide>)
                                                         }
                                                     </>):(<>
