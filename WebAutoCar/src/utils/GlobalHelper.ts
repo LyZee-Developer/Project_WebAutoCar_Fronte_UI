@@ -5,10 +5,7 @@ const str:{name:string,test:boolean} ={
 const translate=(kh:string,en:string)=>{
     var lang = localStorage.getItem("lang");
     var value = kh;
-    if(lang==null || lang=="") {
-        value= kh;
-        return;
-    }
+    if(lang==null || lang=="") return kh;
     var obj = JSON.parse(lang);
     if(obj.code !=="cam") value = en;
     return value;
